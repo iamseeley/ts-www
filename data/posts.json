@@ -2,13 +2,15 @@
     {
         "title": "Post1",
         "date": "Nov 11",
-        "url": "/post/post1"
+        "url": "/post/post1",
+        "featured": true
         
     },
     {
         "title": "Post 2",
         "date": "Nov 12",
-        "url": "/post/post2"
+        "url": "/post/post2",
+        "featured": true
         
     }
 ]

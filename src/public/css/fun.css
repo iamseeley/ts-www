@@ -1,5 +1,5 @@
 :root {
-    --bg-color: green;
+    --bg-color: yellow;
     --fg-color: blue;
     --text-color: purple;
     --font-family: 'Arial', sans-serif;
@@ -7,22 +7,21 @@
 
 
 header {
-    background-color: gray;
+    background-color: slategray;
     padding: 12px;
 }
 
 footer {
-    background-color: gray;
+    background-color: slategray;
     padding: 12px;
 }
 
 nav {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    gap: 24px;
-    align-items: center;
     max-width: 624px;
+    justify-content: space-between;
 }
 
 nav a {
@@ -31,10 +30,12 @@ nav a {
     color: white;
     border-radius: 4px;
     text-decoration: none;
+    box-shadow: 2px 2px lightgoldenrodyellow;
 }
 
 nav a:active {
-    background-color: rgba(255, 166, 0, 0.644);
+    transform: translate(1px, 1px);
+    box-shadow: none;
 }
 
 nav a:hover {
@@ -72,6 +73,7 @@ nav a:hover {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4px;
+    justify-content: end;
 }
 
 body {
@@ -85,16 +87,25 @@ body {
 main {
     padding: 12px;
     max-width: 624px;
+    margin-bottom: 30px;
 }
 
 aside {
     background-color: gray;
     padding: 12px;
     color: white;
+    box-shadow: 6px 6px darkslategray;
+
+}
+
+section {
+    margin-bottom: 24px;
 }
 
 
-
+h3 {
+    margin-bottom: 8px;
+}
 
 
 

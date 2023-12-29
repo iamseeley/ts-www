@@ -16,7 +16,7 @@
     <header>
         
         <nav>
-            <div class="avatar"></div>
+            <div><div class="avatar"></div></div>
             <div class="link-container"><a href="/">home</a><a href="/posts">posts</a><a href="/notes">notes</a><a href="/collections">collections</a><a href="/about">about</a><a href="/photos">photos</a><a href="/logs">captain's log</a><a href="/cv.pdf">cv</a></div>
         </nav>
     </header>
@@ -25,6 +25,41 @@
         
         
         {{ .Page.Body | markDown }}
+
+        {{ if eq .Page.Title "Home"}}
+            <section>
+                <h3>Featured Posts</h3>
+                {{ range .Data.posts }}
+                {{ if .featured }}
+                    <div>
+                        <a href="{{ .url }}">{{ .title }}</a>
+                        <time>{{ .date }}</time>
+                    </div>
+                {{end}}
+                {{end}}
+            </section>
+            <section>
+                <h3>Recent Notes</h3>
+                {{ range .Data.notes }}
+                {{ if .featured }}
+                    <div>
+                        <a href="{{ .url }}">{{ .title }}</a>
+                        <time>{{ .date }}</time>
+                    </div>
+                {{end}}
+                {{end}}
+            </section>
+            <section>
+                <h3>Recent Logs</h3>
+            </section>
+            <section>
+                <h3>Collections</h3>
+            </section>
+            <aside>
+                <strong>About this site</strong>
+                <p>about this site</p>
+            </aside>
+        {{ end }}
 
         {{ if eq .Page.Title "Collections"}}
             {{ range .Data.collections }}
