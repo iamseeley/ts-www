@@ -12,12 +12,13 @@
     <link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
 </head>
 <body>
+    <div class="banner"></div>
     <div class="update"><p>tseeley.com updated today at 3:45 PM</p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg></div>
     <header>
         
         <nav>
             <div><div class="avatar"></div></div>
-            <div class="link-container"><a href="/">home</a><a href="/posts">posts</a><a href="/notes">notes</a><a href="/collections">collections</a><a href="/about">about</a><a href="/photos">photos</a><a href="/logs">captain's log</a><a href="/cv.pdf">cv</a></div>
+            <div class="link-container"><a href="/">home</a><a href="/posts">posts</a><a href="/notes">notes</a><a href="/collections">collections</a><a href="/about">about</a><a href="/photos">photos</a><a href="/logs">captain's log</a><a target="_blank" href="/public/cv.pdf">cv</a></div>
         </nav>
     </header>
     
@@ -31,9 +32,9 @@
                 <h3>Featured Posts</h3>
                 {{ range .Data.posts }}
                 {{ if .featured }}
-                    <div>
+                    <div class="featured-posts">
                         <a href="{{ .url }}">{{ .title }}</a>
-                        <time>{{ .date }}</time>
+                        <time><em>{{ .date }}</em></time>
                     </div>
                 {{end}}
                 {{end}}
@@ -42,9 +43,9 @@
                 <h3>Recent Notes</h3>
                 {{ range .Data.notes }}
                 {{ if .featured }}
-                    <div>
+                    <div class="recent-notes">
                         <a href="{{ .url }}">{{ .title }}</a>
-                        <time>{{ .date }}</time>
+                        <time><em>{{ .date }}</em></time>
                     </div>
                 {{end}}
                 {{end}}
@@ -57,7 +58,7 @@
             </section>
             <aside>
                 <strong>About this site</strong>
-                <p>about this site</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </aside>
         {{ end }}
 
@@ -71,7 +72,7 @@
             {{ end }}
         {{ else if eq .Page.Title "Posts" }}
             {{ range .Data.posts}}
-                <div>
+                <div class="post-range">
                     <a href="{{ .url }}">{{ .title }}</a>
                     <p>{{ .date }}</p>
                 </div>
@@ -87,7 +88,7 @@
         
 
     </main>
-    <footer>made by <span><a href="https://tseeley.com">Thomas</a></span></footer>
+    <footer><p class=""><a href="/about">Thomas Seeley</a> © 2023 — <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">BY-NC-SA 4.0</a></p></footer>
 </body>
 </html>
 {{ end }}

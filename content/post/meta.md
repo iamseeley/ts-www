@@ -1,5 +1,5 @@
 ---
-title: 'Post 2'
+title: 'Meta'
 description: 'Post 2 this is.'
 ---
 
