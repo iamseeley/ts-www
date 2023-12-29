@@ -1,0 +1,9 @@
+{
+    "siteTitle": "Static Site",
+    "siteDescription": "This is a description of my static site.",
+    "templatePath": "./templates/",
+    "contentPath": "./content/",
+    "outputPath": "./src/",
+    "themeName": "fun",
+    "dataPath": "./data/"
+}

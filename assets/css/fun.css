@@ -1,0 +1,100 @@
+:root {
+    --bg-color: green;
+    --fg-color: blue;
+    --text-color: purple;
+    --font-family: 'Arial', sans-serif;
+}
+
+
+header {
+    background-color: gray;
+    padding: 12px;
+}
+
+footer {
+    background-color: gray;
+    padding: 12px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+    max-width: 624px;
+}
+
+nav a {
+    background-color: orange;
+    padding: 4px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+nav a:active {
+    background-color: rgba(255, 166, 0, 0.644);
+}
+
+nav a:hover {
+    background-color: rgba(255, 166, 0, 0.644);
+}
+
+.update {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--fg-color);
+    padding: 4px;
+    align-items: center;
+}
+
+.update p {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+}
+
+.flag {
+    background-color: gray;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    background-color: purple;
+    border-radius: 100%;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    
+}
+
+main {
+    padding: 12px;
+    max-width: 624px;
+}
+
+aside {
+    background-color: gray;
+    padding: 12px;
+    color: white;
+}
+
+
+
+
+
+
