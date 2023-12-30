@@ -5,6 +5,7 @@
     --text-color-1: #eef1f1;
     --text-color-2: #bfc9cc;
     --font-family: 'Arial', sans-serif;
+    --content-width: 624px;
 }
 
 
@@ -23,13 +24,14 @@ footer {
     width: 100%;
     height: 4px;
     background-color: #FFA101;
+    margin-bottom: 6px;
 }
 
 nav {
     align-items: center;
     display: flex;
     flex-direction: row;
-    max-width: 624px;
+    
     justify-content: space-between;
 }
 
@@ -85,17 +87,22 @@ nav a:hover {
     justify-content: end;
 }
 
+.wrap {
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
 body {
+    padding-top: 4px;
     margin: 0;
-    padding: 0;
+    border-top: 4px solid #FFA101;
     background-color: var(--bg-color);
     font-family: var(--font-family);
-    
 }
 
 main {
     padding: 12px;
-    max-width: 624px;
+    /* max-width: 624px; */
     margin-bottom: 30px;
     color: var(--text-color-1);
 }
