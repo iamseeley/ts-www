@@ -1,11 +1,11 @@
 
-{{ define "note" }}
+{{ define "notes" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{.Page.Title}} ~ Thomas Seeley</title>
+	<title>Go-Forth - {{.Page.Title}}</title>
 	<link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
 </head>
 <body>
@@ -14,6 +14,13 @@
 	<main>
 		<h2>{{.Page.Title}}</h2>
 		{{ .Page.Body | markDown }}
+		{{ range .Data.projects }}
+			<div>
+				<h3>{{ .name }}</h3>
+				<p>{{ .description }}</p>
+			</div>
+		{{ end }}
+
 	</main>
 	<footer>made by Thomas</footer>
 </body>

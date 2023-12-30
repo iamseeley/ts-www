@@ -2,14 +2,7 @@
     {
         "title": "Intro",
         "date": "Nov 11",
-        "url": "/post/intro",
-        "featured": true
-        
-    },
-    {
-        "title": "Meta",
-        "date": "Nov 12",
-        "url": "/post/meta",
+        "url": "/posts/intro",
         "featured": true
         
     }
