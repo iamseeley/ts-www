@@ -51,10 +51,12 @@
                 <h3>Featured Posts</h3>
                 {{ range .Data.posts }}
                 {{ if .featured }}
-                    <div class="featured-posts">
+                    <ul class="home-list">
+                    <li class="featured-posts">
                         <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
-                    </div>
+                    </li>
+                    </ul>
                 {{end}}
                 {{end}}
             </section>
@@ -64,7 +66,7 @@
                 {{ if .featured }}
                     <ul class="home-list">
                     <li class="featured-posts">
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>:
                         {{ .description }}
                     </li>
                     </ul>
@@ -75,10 +77,12 @@
                 <h3>Recent Notes</h3>
                 {{ range .Data.notes }}
                 {{ if .featured }}
-                    <div class="recent-notes">
+                    <ul class="home-list">
+                    <li>
                         <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
-                    </div>
+                    </li>
+                    </ul>
                 {{end}}
                 {{end}}
             </section>
@@ -88,10 +92,12 @@
             <section>
                 <h3>Collections</h3>
             </section>
+            <section>
             <aside>
                 <p><strong>About this site</strong></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </aside>
+        </section>
         {{ end }}
 
         {{ if eq .Page.Title "Collections"}}
