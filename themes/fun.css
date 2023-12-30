@@ -108,6 +108,7 @@ nav a:hover {
     display: flex;
     flex-direction: row;
     gap: .2em;
+    align-items: center;
 }
 
 .wrap {
@@ -161,8 +162,12 @@ section {
     margin-bottom: 3em;
 }
 
+h2 {
+    font-size: 2em;
+}
 
 h3 {
+    font-size: 1.5em;
     margin-bottom: .5em;
 }
 
@@ -181,10 +186,23 @@ time {
     font-size: .8em;
 }
 
+.home-list {
+    padding: 0;
+    list-style-type: none;
+}
+
 .featured-posts {
     display: flex;
     flex-direction: row;
     gap: 1em;
+}
+
+.featured-posts a {
+    margin-right: 0;
+}
+
+.featured-posts p {
+    margin: 0;
 }
 
 .recent-notes {

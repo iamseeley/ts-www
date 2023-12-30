@@ -52,9 +52,22 @@
                 {{ range .Data.posts }}
                 {{ if .featured }}
                     <div class="featured-posts">
-                        <a href="{{ .url }}">{{ .title }}</a>
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
                     </div>
+                {{end}}
+                {{end}}
+            </section>
+            <section>
+                <h3>Featured Projects</h3>
+                {{ range .Data.projects }}
+                {{ if .featured }}
+                    <ul class="home-list">
+                    <li class="featured-posts">
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
+                        {{ .description }}
+                    </li>
+                    </ul>
                 {{end}}
                 {{end}}
             </section>
@@ -63,7 +76,7 @@
                 {{ range .Data.notes }}
                 {{ if .featured }}
                     <div class="recent-notes">
-                        <a href="{{ .url }}">{{ .title }}</a>
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
                     </div>
                 {{end}}
