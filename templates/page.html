@@ -24,9 +24,9 @@
     
     <main>
         
-        
-        {{ .Page.Body | markDown }}
-
+        <section>
+            {{ .Page.Body | markDown }}
+        </section>
         {{ if eq .Page.Title "Home"}}
             <section>
                 <h3>Featured Posts</h3>
