@@ -96,6 +96,7 @@ nav a:hover {
     flex-direction: row;
     flex-wrap: wrap;
     gap: .8em;
+    align-items: center;
 }
 
 .socials a:hover {
@@ -111,7 +112,6 @@ nav a:hover {
     display: flex;
     flex-direction: row;
     gap: .2em;
-    align-items: center;
 }
 
 .wrap {
