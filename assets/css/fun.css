@@ -96,7 +96,15 @@ nav a:hover {
     flex-direction: row;
     flex-wrap: wrap;
     gap: .8em;
-    align-items: center;
+    align-items: center; /* Ensure baseline alignment */
+}
+
+.socials a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: .2em;
+    align-items: center; /* Align items to the center */
 }
 
 .socials a:hover {
@@ -107,12 +115,6 @@ nav a:hover {
     stroke: var(--acent);
 }
 
-.socials a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    gap: .2em;
-}
 
 .wrap {
     max-width: var(--content-width);
@@ -197,6 +199,9 @@ time {
     list-style-type: none;
 }
 
+.home-list li {
+    padding-bottom: .3em;
+}
 
 
 

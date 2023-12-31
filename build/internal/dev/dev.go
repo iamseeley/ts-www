@@ -58,6 +58,94 @@ func watchContentDirectory(contentDir, templateDir string) {
 	}
 }
 
+func watchForNewMarkdownFiles(contentDir string) {
+	watcher, err := fsnotify.NewWatcher()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer watcher.Close()
+
+	// Add contentDir and its immediate subdirectories to the watcher
+	err = filepath.Walk(contentDir, func(path string, info os.FileInfo, err error) error {
+		if info.IsDir() && (path == contentDir || filepath.Dir(path) == contentDir) {
+			return watcher.Add(path)
+		}
+		return nil
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for {
+		select {
+		case event := <-watcher.Events:
+			if event.Op&fsnotify.Create == fsnotify.Create {
+				info, err := os.Stat(event.Name)
+				if err != nil || info.IsDir() {
+					continue
+				}
+				if filepath.Ext(event.Name) == ".md" {
+					collection := filepath.Base(filepath.Dir(event.Name))
+					if collection != filepath.Base(contentDir) { // Exclude files directly in contentDir
+						appendFrontmatter(event.Name, collection)
+					}
+				}
+			}
+		case err := <-watcher.Errors:
+			log.Println("error:", err)
+		}
+	}
+}
+
+func appendFrontmatter(filePath, collection string) error {
+	// Define frontmatter templates for each collection
+	templates := map[string]string{
+		"notes": `---
+title: "Your Note Title"
+summary: "A brief summary of the note."
+tags: ["tag1", "tag2"]
+date: "YYYY-MM-DD"
+draft: false
+---
+`,
+		"logs": `---
+title: "Your Log Title"
+date: "YYYY-MM-DD"
+draft: false
+---
+`,
+		// Add more templates for other collections as needed
+	}
+
+	// Select the appropriate template based on the collection name
+	template, ok := templates[collection]
+	if !ok {
+		log.Printf("No frontmatter template for collection: %s", collection)
+		return fmt.Errorf("no frontmatter template for collection: %s", collection)
+	}
+
+	// Read the existing content of the file
+	existingContent, err := os.ReadFile(filePath)
+	if err != nil {
+		return err
+	}
+
+	// Create a new file with the same name (overwriting the existing file)
+	file, err := os.Create(filePath)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	// Write the template and then the existing content to the file
+	if _, err := file.WriteString(template + string(existingContent)); err != nil {
+		return err
+	}
+
+	log.Printf("Frontmatter appended to file in collection '%s': %s", collection, filePath)
+	return nil
+}
+
 func createTemplateForDir(dirName, templateDir string) {
 	templatePath := filepath.Join(templateDir, dirName+".html")
 	if _, err := os.Stat(templatePath); os.IsNotExist(err) {
@@ -365,6 +453,7 @@ func StartServer() {
 	}
 
 	go watchContentDirectory("content", "templates")
+	go watchForNewMarkdownFiles("content")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		switch {

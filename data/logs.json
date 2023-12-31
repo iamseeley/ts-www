@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Post1",
+        "type": "link",
+        "url": "/post/post1",
+        "summary": "summary",
+        "featured": "true"
+        
+    },
+    {
+        "title": "Post 2",
+        "type": "blog",
+        "url": "/post/post1",
+        "summary": "summary",
+        "featured": "true"
+    }
+]

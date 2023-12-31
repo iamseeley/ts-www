@@ -49,48 +49,72 @@
         {{ if eq .Page.Title "Home"}}
             <section>
                 <h3>Featured Posts</h3>
+                <ul class="home-list">
                 {{ range .Data.posts }}
                 {{ if .featured }}
-                    <ul class="home-list">
+                    
                     <li class="featured-posts">
                         <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
                     </li>
-                    </ul>
                 {{end}}
                 {{end}}
+                </ul>
             </section>
             <section>
                 <h3>Featured Projects</h3>
+                <ul class="home-list">
                 {{ range .Data.projects }}
                 {{ if .featured }}
-                    <ul class="home-list">
+                   
                     <li class="featured-posts">
                         <strong><a href="{{ .url }}">{{ .title }}</a></strong>:
                         {{ .description }}
                     </li>
-                    </ul>
+                    
                 {{end}}
                 {{end}}
+                </ul>
             </section>
             <section>
                 <h3>Recent Notes</h3>
+                <ul class="home-list">
                 {{ range .Data.notes }}
                 {{ if .featured }}
-                    <ul class="home-list">
                     <li>
                         <strong><a href="{{ .url }}">{{ .title }}</a></strong>
                         <time><em>{{ .date }}</em></time>
                     </li>
-                    </ul>
+                    
                 {{end}}
                 {{end}}
+                </ul>
             </section>
             <section>
                 <h3>Recent Logs</h3>
+                <ul class="home-list">
+                {{ range .Data.logs }}
+                {{ if .featured }}
+                    <li>
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
+                        <time><em>{{ .date }}</em></time>
+                    </li>
+                {{end}}
+                {{end}}
+                </ul>
             </section>
             <section>
                 <h3>Collections</h3>
+                <ul class="home-list">
+                {{ range .Data.collections }}
+                {{ if .featured }}
+                    <li>
+                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
+                        <time><em>{{ .type }}</em></time>
+                    </li>
+                {{end}}
+                {{end}}
+                </ul>
             </section>
             <section>
             <aside>

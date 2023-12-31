@@ -5,5 +5,12 @@
         "url": "/posts/intro",
         "featured": true
         
+    },
+    {
+        "title": "Intro",
+        "date": "Nov 11",
+        "url": "/posts/intro",
+        "featured": true
+        
     }
 ]
