@@ -1,17 +1,11 @@
-[
-    {
-        "title": "Post1",
-        "type": "link",
-        "url": "/post/post1",
-        "summary": "summary",
-        "featured": "true"
-        
-    },
-    {
-        "title": "Post 2",
-        "type": "blog",
-        "url": "/post/post1",
-        "summary": "summary",
-        "featured": "true"
+{
+  "newyear": {
+    "body": "\n",
+    "frontMatter": {
+      "content": "Focusing on making connections online and irl will be a big part of this year. I'm going to give less thought to how I engage with people online. I'll support the interesting and post like I'm writing in a diary. 🤝",
+      "date": "2024-01-02",
+      "draft": false,
+      "title": "New Year"
     }
-]
+  }
+}

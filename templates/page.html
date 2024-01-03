@@ -1,48 +1,6 @@
 {{ define "page" }}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ if eq .Page.Title "Home"}}
-    <title>Thomas Seeley</title>
-    {{ else }}
-    <title>{{.Page.Title}} ~ Thomas Seeley</title>
-    {{ end }}
-    <link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
-</head>
-<body>
-    <div class="wrap">
-    <div class="update"><div></div>
-    {{ if eq .Page.Title "Home"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
-    {{ else if eq .Page.Title "Posts"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scroll-text"><path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M15 8h-5"/><path d="M15 12h-5"/></svg>
-    {{ else if eq .Page.Title "Notes"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-edit"><path d="M8.4 10.6a2.1 2.1 0 1 1 2.99 2.98L6 19l-4 1 1-3.9Z"/><path d="M2 11.5V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9.5"/></svg>
-    {{ else if eq .Page.Title "Captain's Log"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-repeat-2"><path d="m2 9 3-3 3 3"/><path d="M13 18H7a2 2 0 0 1-2-2V6"/><path d="m22 15-3 3-3-3"/><path d="M11 6h6a2 2 0 0 1 2 2v10"/></svg>
-    {{ else if eq .Page.Title "Collections"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shapes"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>
-    {{ else if eq .Page.Title "Photos"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-    {{ else if eq .Page.Title "About"}}
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eef1f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>
-    {{end}}
+{{template "_top" .}}
 
-
-
-    </div>
-    <header>
-        
-        <nav>
-            <div><img class="avatar" src="/public/images/profile.jpg"/></div>
-            <div class="link-container"><a href="/">home</a><a href="/posts">posts</a><a href="/notes">notes</a><a href="/collections">collections</a><a href="/about">about</a><a href="/photos">photos</a><a href="/logs">captain's log</a><a target="_blank" href="/public/cv.pdf">cv</a></div>
-        </nav>
-    </header>
-    
-    <main>
-        
         <section>
             {{ .Page.Body | markDown }}
         </section>
@@ -51,11 +9,11 @@
                 <h3>Featured Posts</h3>
                 <ul class="home-list">
                 {{ range .Data.posts }}
-                {{ if .featured }}
+                {{ if .frontMatter.featured }}
                     
                     <li class="featured-posts">
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
-                        <time><em>{{ .date }}</em></time>
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
                 {{end}}
                 {{end}}
@@ -65,11 +23,11 @@
                 <h3>Featured Projects</h3>
                 <ul class="home-list">
                 {{ range .Data.projects }}
-                {{ if .featured }}
+                {{ if .frontMatter.featured }}
                    
                     <li class="featured-posts">
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>:
-                        {{ .description }}
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>:
+                        {{ .frontMatter.description }}
                     </li>
                     
                 {{end}}
@@ -80,13 +38,13 @@
                 <h3>Recent Notes</h3>
                 <ul class="home-list">
                 {{ range .Data.notes }}
-                {{ if .featured }}
+                
                     <li>
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
-                        <time><em>{{ .date }}</em></time>
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
                     
-                {{end}}
+                
                 {{end}}
                 </ul>
             </section>
@@ -94,10 +52,10 @@
                 <h3>Recent Logs</h3>
                 <ul class="home-list">
                 {{ range .Data.logs }}
-                {{ if .featured }}
+                {{ if .frontMatter.featured }}
                     <li>
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
-                        <time><em>{{ .date }}</em></time>
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
                 {{end}}
                 {{end}}
@@ -107,10 +65,10 @@
                 <h3>Collections</h3>
                 <ul class="home-list">
                 {{ range .Data.collections }}
-                {{ if .featured }}
+                {{ if .frontMatter.featured }}
                     <li>
-                        <strong><a href="{{ .url }}">{{ .title }}</a></strong>
-                        <time><em>{{ .type }}</em></time>
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.type }}</em></time>
                     </li>
                 {{end}}
                 {{end}}
@@ -127,31 +85,26 @@
         {{ if eq .Page.Title "Collections"}}
             {{ range .Data.collections }}
                 <div>
-                    <a href="{{ .url }}">{{ .title }}</a>
-                    <p>{{ .type }}</p>
-                    <p>{{ .description }}</p>
+                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
+                    <p>{{ .frontMatter.type }}</p>
+                    <p>{{ .frontMatter.description }}</p>
                 </div>
             {{ end }}
         {{ else if eq .Page.Title "Posts" }}
             {{ range .Data.posts}}
                 <div class="post-range">
-                    <a href="{{ .url }}">{{ .title }}</a>
-                    <time><em>{{ .date }}</em></time>
+                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
+                    <time><em>{{ .frontMatter.date }}</em></time>
                 </div>
             {{ end }}
         {{ else if eq .Page.Title "Notes" }}
                 {{ range .Data.notes}}
                 <div>
-                    <a href="{{ .url }}">{{ .title }}</a>
-                    <p>{{ .date }}</p>
+                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
+                    <p>{{ .frontMatter.date }}</p>
                 </div>
                 {{ end }}
         {{ end }}
         
-
-    </main>
-    <footer><p class=""><a href="/about">Thomas Seeley</a> © 2023 — <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">BY-NC-SA 4.0</a></p></footer>
-    </div>
-</body>
-</html>
+        {{template "_bottom" .}}
 {{ end }}

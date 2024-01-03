@@ -1,16 +1,13 @@
-[
-    {
-        "title": "Intro",
-        "date": "Nov 11",
-        "url": "/posts/intro",
-        "featured": true
-        
-    },
-    {
-        "title": "Intro",
-        "date": "Nov 11",
-        "url": "/posts/intro",
-        "featured": true
-        
+{
+  "intro": {
+    "body": "\n\nHi, my name is Thomas and I like making things. I'll share those things here.\n\nSound good? Okay.\n\nBest,\n\nThomas",
+    "frontMatter": {
+      "date": "11/10/23",
+      "description": "Post 1 this is.",
+      "draft": false,
+      "featured": true,
+      "title": "Introductions",
+      "url": "/posts/intro"
     }
-]
+  }
+}

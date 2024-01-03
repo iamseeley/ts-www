@@ -1,9 +1,43 @@
-[
-    {
-        "title": "CS-Topics",
-        "date": "Nov 11",
-        "url": "/notes/cs-topics",
-        "featured": true
-        
+{
+  "cs-topics": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2023/12/31",
+      "draft": false,
+      "featured": true,
+      "summary": "A brief summary of the note.",
+      "tags": [
+        "tag1",
+        "tag2"
+      ],
+      "title": "CS-Topics",
+      "url": "/notes/cs-topics"
     }
-]
+  },
+  "new-note": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2023-10-11",
+      "draft": false,
+      "summary": "A brief summary of the note.",
+      "tags": [
+        "tag1",
+        "tag2"
+      ],
+      "title": "Your Note Title"
+    }
+  },
+  "test-note": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2022-01-12",
+      "draft": false,
+      "summary": "A brief summary of the note.",
+      "tags": [
+        "tag1",
+        "tag2"
+      ],
+      "title": "Your Note Title"
+    }
+  }
+}

@@ -4,28 +4,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"io"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
-
 	"ts-www/build/internal/config"
+	"ts-www/build/internal/models"
 	"ts-www/build/internal/utils"
 
 	"github.com/russross/blackfriday/v2"
 )
 
-// Define a data structure for your site pages
-type Page struct {
-	Title       string
-	Description string
-	Body        []byte
-	Theme       string
-}
-
 // Load site pages written in Markdown from a directory
-func loadPageFromDirectory(directory, title string) (*Page, error) {
+func loadPageFromDirectory(directory, title string) (*models.Page, error) {
 	filename := directory + title
 	content, err := os.ReadFile(filename)
 	if err != nil {
@@ -37,7 +28,7 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 		return nil, err
 	}
 
-	var page Page
+	var page models.Page
 	if title, ok := frontMatter["title"].(string); ok {
 		page.Title = title
 	}
@@ -51,65 +42,10 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 	}
 
 	page.Theme = cfg.ThemeName
-
 	page.Body = blackfriday.Run(body)
+	page.Collection = filepath.Base(filepath.Dir(filename))
 
 	return &page, nil
-}
-
-func copyFile(src, dst string) error {
-	source, err := os.Open(src)
-	if err != nil {
-		return err
-	}
-	defer source.Close()
-
-	destination, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer destination.Close()
-
-	_, err = io.Copy(destination, source)
-	return err
-}
-
-func copyDir(src string, dst string) error {
-	// Get properties of source dir
-	srcInfo, err := os.Stat(src)
-	if err != nil {
-		return err
-	}
-
-	// Create the destination directory
-	err = os.MkdirAll(dst, srcInfo.Mode())
-	if err != nil {
-		return err
-	}
-
-	directory, _ := os.Open(src)
-	objects, err := directory.Readdir(-1)
-
-	for _, obj := range objects {
-		srcFile := filepath.Join(src, obj.Name())
-		dstFile := filepath.Join(dst, obj.Name())
-
-		if obj.IsDir() {
-			// Create sub-directories - recursively
-			err = copyDir(srcFile, dstFile)
-			if err != nil {
-				return err
-			}
-		} else {
-			// Perform the file copy
-			err = copyFile(srcFile, dstFile)
-			if err != nil {
-				return err
-			}
-		}
-	}
-
-	return nil
 }
 
 func loadData(directory string) (map[string]interface{}, error) {
@@ -170,7 +106,7 @@ func BuildSite() {
 	themeCSSPath := filepath.Join("themes", cfg.ThemeName+".css")
 	assetsCSSPath := filepath.Join("assets/css", cfg.ThemeName+".css")
 	os.MkdirAll(filepath.Dir(assetsCSSPath), os.ModePerm) // Create the assets/css directory if it doesn't exist
-	err = copyFile(themeCSSPath, assetsCSSPath)
+	err = utils.CopyFile(themeCSSPath, assetsCSSPath)
 	if err != nil {
 		log.Fatalf("Failed to copy theme CSS to assets directory: %v", err)
 	}
@@ -183,7 +119,7 @@ func BuildSite() {
 	// Copy the assets directory to public in the output directory
 	assetsSrc := "assets"
 	assetsDst := filepath.Join(outputDir, "public")
-	err = copyDir(assetsSrc, assetsDst)
+	err = utils.CopyDir(assetsSrc, assetsDst)
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
@@ -275,7 +211,7 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 	log.Printf("Executing template with Page: %+v", page)
 
 	templateData := struct {
-		Page *Page
+		Page *models.Page
 		Data map[string]interface{}
 	}{
 		Page: page,

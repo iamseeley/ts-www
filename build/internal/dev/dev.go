@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	"io"
 	"log"
 	"net/http"
 	"os"
@@ -12,21 +11,12 @@ import (
 	"regexp"
 	"strings"
 	"ts-www/build/internal/config"
+	"ts-www/build/internal/models"
 	"ts-www/build/internal/utils"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/russross/blackfriday/v2"
 )
-
-// Now you can use cfg to access your configuration settings
-
-// Define a data structure for your site pages
-type Page struct {
-	Title       string
-	Description string
-	Body        []byte
-	Theme       string
-}
 
 func watchContentDirectory(contentDir, templateDir string) {
 	watcher, err := fsnotify.NewWatcher()
@@ -170,31 +160,16 @@ func createTemplateForDir(dirName, templateDir string) {
 		// Basic HTML template content
 		templateContent := fmt.Sprintf(`
 {{ define "%s" }}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Go-Forth - {{.Page.Title}}</title>
-	<link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
-</head>
-<body>
-	<header><nav><div></div><a href="/">home</a><a href="/">post</a></nav></header>
-	
-	<main>
-		<h2>{{.Page.Title}}</h2>
-		{{ .Page.Body | markDown }}
-		{{ range .Data.projects }}
-			<div>
-				<h3>{{ .name }}</h3>
-				<p>{{ .description }}</p>
-			</div>
-		{{ end }}
+{{template "_top" .}}
 
-	</main>
-	<footer>made by Thomas</footer>
-</body>
-</html>
+	<section>
+		<h2>{{.Page.Title}}</h2>
+		<article>
+		{{ .Page.Body | markDown }}
+		</article>
+	</section>
+
+{{template "_bottom" .}}
 {{ end }}
 `, dirName)
 
@@ -207,8 +182,7 @@ func createTemplateForDir(dirName, templateDir string) {
 	}
 }
 
-// Load site pages written in Markdown from a directory
-func loadPageFromDirectory(directory, title string) (*Page, error) {
+func loadPageFromDirectory(directory, title string) (*models.Page, error) {
 	filename := directory + title
 	content, err := os.ReadFile(filename)
 	if err != nil {
@@ -220,49 +194,19 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 		return nil, err
 	}
 
-	var page Page
-	if title, ok := frontMatter["title"].(string); ok {
-		page.Title = title
-	}
-	if description, ok := frontMatter["description"].(string); ok {
-		page.Description = description
-	}
-
 	cfg, err := config.LoadConfig("./config.json") // Load configuration
 	if err != nil {
 		return nil, err
 	}
 
-	page.Theme = cfg.ThemeName
-	page.Body = body
+	var pageItem models.Page
+	pageItem.Title, _ = frontMatter["title"].(string)
+	pageItem.Body = body
+	pageItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
+	pageItem.Collection = filepath.Base(filepath.Dir(filename))
 
-	return &page, nil
+	return &pageItem, nil
 }
-
-// func parseFrontMatter(content []byte) (map[string]interface{}, []byte, error) {
-// 	frontMatter := make(map[string]interface{})
-// 	var contentStart int
-
-// 	delimiter := []byte("---")
-// 	start := bytes.Index(content, delimiter)
-// 	if start == -1 {
-// 		return nil, nil, errors.New("Front matter delimiter not found")
-// 	}
-
-// 	end := bytes.Index(content[start+len(delimiter):], delimiter)
-// 	if end == -1 {
-// 		return nil, nil, errors.New("Second front matter delimiter not found")
-// 	}
-
-// 	if err := yaml.Unmarshal(content[start+len(delimiter):start+len(delimiter)+end], &frontMatter); err != nil {
-// 		return nil, nil, err
-// 	}
-
-// 	contentStart = start + len(delimiter) + end + len(delimiter)
-// 	actualContent := content[contentStart:]
-
-// 	return frontMatter, actualContent, nil
-// }
 
 func loadData(directory string) (map[string]interface{}, error) {
 	data := make(map[string]interface{})
@@ -314,7 +258,7 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	collection := filepath.Base(filepath.Dir(filePath))
 
 	templateData := struct {
-		Page *Page
+		Page *models.Page
 		Data map[string]interface{}
 	}{
 		Page: p,
@@ -382,61 +326,6 @@ func setCacheHeaders(w http.ResponseWriter, maxAge int) {
 	w.Header().Set("Cache-Control", fmt.Sprintf("max-age=%d", maxAge))
 }
 
-func copyFile(src, dst string) error {
-	source, err := os.Open(src)
-	if err != nil {
-		return err
-	}
-	defer source.Close()
-
-	destination, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	defer destination.Close()
-
-	_, err = io.Copy(destination, source)
-	return err
-}
-
-func copyDir(src string, dst string) error {
-	// Get properties of source dir
-	srcInfo, err := os.Stat(src)
-	if err != nil {
-		return err
-	}
-
-	// Create the destination directory
-	err = os.MkdirAll(dst, srcInfo.Mode())
-	if err != nil {
-		return err
-	}
-
-	directory, _ := os.Open(src)
-	objects, err := directory.Readdir(-1)
-
-	for _, obj := range objects {
-		srcFile := filepath.Join(src, obj.Name())
-		dstFile := filepath.Join(dst, obj.Name())
-
-		if obj.IsDir() {
-			// Create sub-directories - recursively
-			err = copyDir(srcFile, dstFile)
-			if err != nil {
-				return err
-			}
-		} else {
-			// Perform the file copy
-			err = copyFile(srcFile, dstFile)
-			if err != nil {
-				return err
-			}
-		}
-	}
-
-	return nil
-}
-
 func StartServer() {
 	// Load configuration
 	cfg, err := config.LoadConfig("./config.json")
@@ -444,11 +333,16 @@ func StartServer() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
+	err = utils.ConvertMarkdownToJSON(cfg.ContentPath, cfg.DataPath)
+	if err != nil {
+		log.Fatalf("Error converting markdown to JSON: %v", err)
+	}
+
 	// Copy the theme CSS to the assets/css directory
 	themeCSSPath := filepath.Join("themes", cfg.ThemeName+".css")
 	assetsCSSPath := filepath.Join("assets/css", cfg.ThemeName+".css")
 	os.MkdirAll(filepath.Dir(assetsCSSPath), os.ModePerm) // Create the assets/css directory
-	err = copyFile(themeCSSPath, assetsCSSPath)
+	err = utils.CopyFile(themeCSSPath, assetsCSSPath)
 	if err != nil {
 		log.Fatalf("Failed to copy theme CSS to assets directory: %v", err)
 	}
@@ -465,7 +359,7 @@ func StartServer() {
 	// Copy the assets directory to public in the output directory
 	assetsSrc := "assets"
 	assetsDst := filepath.Join(outputDir, "public")
-	err = copyDir(assetsSrc, assetsDst)
+	err = utils.CopyDir(assetsSrc, assetsDst)
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
