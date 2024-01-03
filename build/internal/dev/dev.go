@@ -1,9 +1,7 @@
 package dev
 
 import (
-	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"html/template"
 	"io"
@@ -13,11 +11,10 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-
 	"ts-www/build/internal/config"
+	"ts-www/build/internal/utils"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/go-yaml/yaml"
 	"github.com/russross/blackfriday/v2"
 )
 
@@ -101,16 +98,37 @@ func appendFrontmatter(filePath, collection string) error {
 	// Define frontmatter templates for each collection
 	templates := map[string]string{
 		"notes": `---
-title: "Your Note Title"
-summary: "A brief summary of the note."
-tags: ["tag1", "tag2"]
-date: "YYYY-MM-DD"
+title: Your Note Title
+summary: A brief summary of the note.
+tags: [tag1, tag2]
+date: YYYY-MM-DD
 draft: false
 ---
 `,
 		"logs": `---
-title: "Your Log Title"
-date: "YYYY-MM-DD"
+title: Your Log Title
+date: YYYY-MM-DD
+draft: false
+content: 
+---
+`,
+		"page": `---
+title: Your Page Title
+description: A brief description of the page
+draft: false
+---
+`,
+		"posts": `---
+title: Your Post Title
+description: A brief description of the post
+date: YYYY-MM-DD
+draft: false
+---
+`,
+		"collections": `---
+title: Your Collection Title
+description: A brief description of the collection
+type: Link, Book, Blog, etc...?
 draft: false
 ---
 `,
@@ -197,7 +215,7 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 		return nil, err
 	}
 
-	frontMatter, body, err := parseFrontMatter(content)
+	frontMatter, body, err := utils.ParseFrontMatter(content)
 	if err != nil {
 		return nil, err
 	}
@@ -221,30 +239,30 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 	return &page, nil
 }
 
-func parseFrontMatter(content []byte) (map[string]interface{}, []byte, error) {
-	frontMatter := make(map[string]interface{})
-	var contentStart int
+// func parseFrontMatter(content []byte) (map[string]interface{}, []byte, error) {
+// 	frontMatter := make(map[string]interface{})
+// 	var contentStart int
 
-	delimiter := []byte("---")
-	start := bytes.Index(content, delimiter)
-	if start == -1 {
-		return nil, nil, errors.New("Front matter delimiter not found")
-	}
+// 	delimiter := []byte("---")
+// 	start := bytes.Index(content, delimiter)
+// 	if start == -1 {
+// 		return nil, nil, errors.New("Front matter delimiter not found")
+// 	}
 
-	end := bytes.Index(content[start+len(delimiter):], delimiter)
-	if end == -1 {
-		return nil, nil, errors.New("Second front matter delimiter not found")
-	}
+// 	end := bytes.Index(content[start+len(delimiter):], delimiter)
+// 	if end == -1 {
+// 		return nil, nil, errors.New("Second front matter delimiter not found")
+// 	}
 
-	if err := yaml.Unmarshal(content[start+len(delimiter):start+len(delimiter)+end], &frontMatter); err != nil {
-		return nil, nil, err
-	}
+// 	if err := yaml.Unmarshal(content[start+len(delimiter):start+len(delimiter)+end], &frontMatter); err != nil {
+// 		return nil, nil, err
+// 	}
 
-	contentStart = start + len(delimiter) + end + len(delimiter)
-	actualContent := content[contentStart:]
+// 	contentStart = start + len(delimiter) + end + len(delimiter)
+// 	actualContent := content[contentStart:]
 
-	return frontMatter, actualContent, nil
-}
+// 	return frontMatter, actualContent, nil
+// }
 
 func loadData(directory string) (map[string]interface{}, error) {
 	data := make(map[string]interface{})

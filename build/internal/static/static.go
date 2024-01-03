@@ -1,9 +1,7 @@
 package static
 
 import (
-	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"html/template"
 	"io"
@@ -13,8 +11,8 @@ import (
 	"strings"
 
 	"ts-www/build/internal/config"
+	"ts-www/build/internal/utils"
 
-	"github.com/go-yaml/yaml"
 	"github.com/russross/blackfriday/v2"
 )
 
@@ -34,7 +32,7 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 		return nil, err
 	}
 
-	frontMatter, body, err := parseFrontMatter(content)
+	frontMatter, body, err := utils.ParseFrontMatter(content)
 	if err != nil {
 		return nil, err
 	}
@@ -57,31 +55,6 @@ func loadPageFromDirectory(directory, title string) (*Page, error) {
 	page.Body = blackfriday.Run(body)
 
 	return &page, nil
-}
-
-func parseFrontMatter(content []byte) (map[string]interface{}, []byte, error) {
-	frontMatter := make(map[string]interface{})
-	var contentStart int
-
-	delimiter := []byte("---")
-	start := bytes.Index(content, delimiter)
-	if start == -1 {
-		return nil, nil, errors.New("Front matter delimiter not found")
-	}
-
-	end := bytes.Index(content[start+len(delimiter):], delimiter)
-	if end == -1 {
-		return nil, nil, errors.New("Second front matter delimiter not found")
-	}
-
-	if err := yaml.Unmarshal(content[start+len(delimiter):start+len(delimiter)+end], &frontMatter); err != nil {
-		return nil, nil, err
-	}
-
-	contentStart = start + len(delimiter) + end + len(delimiter)
-	actualContent := content[contentStart:]
-
-	return frontMatter, actualContent, nil
 }
 
 func copyFile(src, dst string) error {
