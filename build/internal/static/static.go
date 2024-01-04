@@ -1,9 +1,6 @@
 package static
 
 import (
-	"encoding/json"
-	"fmt"
-	"html/template"
 	"log"
 	"os"
 	"path/filepath"
@@ -16,7 +13,7 @@ import (
 )
 
 // Load site pages written in Markdown from a directory
-func loadPageFromDirectory(directory, title string) (*models.Page, error) {
+func loadPageFromDirectory(directory, title string) (*models.Content, error) {
 	filename := directory + title
 	content, err := os.ReadFile(filename)
 	if err != nil {
@@ -28,7 +25,7 @@ func loadPageFromDirectory(directory, title string) (*models.Page, error) {
 		return nil, err
 	}
 
-	var page models.Page
+	var page models.Content
 	if title, ok := frontMatter["title"].(string); ok {
 		page.Title = title
 	}
@@ -48,43 +45,8 @@ func loadPageFromDirectory(directory, title string) (*models.Page, error) {
 	return &page, nil
 }
 
-func loadData(directory string) (map[string]interface{}, error) {
-	data := make(map[string]interface{})
-	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
-		if filepath.Ext(path) == ".json" {
-			fileData, err := os.ReadFile(path)
-			if err != nil {
-				return err
-			}
-
-			var jsonData interface{}
-			if err := json.Unmarshal(fileData, &jsonData); err != nil {
-				return err
-			}
-
-			key := filepath.Base(path)
-			key = strings.TrimSuffix(key, filepath.Ext(key)) // Use filename as the key
-			data[key] = jsonData
-		}
-		return nil
-	})
-	if err != nil {
-		return nil, err
-	}
-	return data, nil
-}
-
-func loadTemplates() error {
-	var err error
-	templates, err = template.New("").Funcs(template.FuncMap{"markDown": markDowner}).ParseGlob("templates/*.html")
-	if err != nil {
-		return fmt.Errorf("error loading templates: %w", err)
-	}
-	return nil
-}
-
 func init() {
-	err := loadTemplates()
+	err := utils.LoadTemplates()
 	if err != nil {
 		log.Fatalf("Failed to load templates: %v", err)
 	}
@@ -97,7 +59,7 @@ func BuildSite() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	data, err := loadData("data")
+	data, err := utils.LoadData("data")
 	if err != nil {
 		log.Fatalf("Failed to load data: %v", err)
 	}
@@ -139,20 +101,6 @@ func BuildSite() {
 
 	log.Println("Site built successfully")
 }
-
-func markDowner(args ...interface{}) template.HTML {
-	s := blackfriday.Run([]byte(fmt.Sprintf("%s", args...)))
-	return template.HTML(s)
-}
-
-func renderTemplate(tmpl string, content interface{}) {
-	err := templates.ExecuteTemplate(os.Stdout, tmpl, content)
-	if err != nil {
-		log.Printf("Error rendering template: %v", err)
-	}
-}
-
-var templates *template.Template
 
 func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *config.Config) error {
 	// Extract the relative path of the Markdown file from the content directory
@@ -197,13 +145,13 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 	tmplName := collection
 
 	// Use the collection's template; default to "site.html" if not found
-	tmpl := templates.Lookup(tmplName + ".html")
+	tmpl := utils.Templates.Lookup(tmplName + ".html")
 	if tmpl == nil {
 		log.Printf("Template %s.html not found, using default site.html", tmplName)
-		tmpl = templates.Lookup("site.html")
+		tmpl = utils.Templates.Lookup("site.html")
 	}
 
-	newdata, err := loadData("data")
+	newdata, err := utils.LoadData("data")
 	if err != nil {
 		log.Printf("Failed to load data: %v", err)
 	}
@@ -211,7 +159,7 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 	log.Printf("Executing template with Page: %+v", page)
 
 	templateData := struct {
-		Page *models.Page
+		Page *models.Content
 		Data map[string]interface{}
 	}{
 		Page: page,

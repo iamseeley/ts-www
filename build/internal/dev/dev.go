@@ -1,9 +1,7 @@
 package dev
 
 import (
-	"encoding/json"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -15,7 +13,6 @@ import (
 	"ts-www/build/internal/utils"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/russross/blackfriday/v2"
 )
 
 func watchContentDirectory(contentDir, templateDir string) {
@@ -182,7 +179,7 @@ func createTemplateForDir(dirName, templateDir string) {
 	}
 }
 
-func loadPageFromDirectory(directory, title string) (*models.Page, error) {
+func loadPageFromDirectory(directory, title string) (*models.Content, error) {
 	filename := directory + title
 	content, err := os.ReadFile(filename)
 	if err != nil {
@@ -199,39 +196,14 @@ func loadPageFromDirectory(directory, title string) (*models.Page, error) {
 		return nil, err
 	}
 
-	var pageItem models.Page
-	pageItem.Title, _ = frontMatter["title"].(string)
-	pageItem.Body = body
-	pageItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
-	pageItem.Collection = filepath.Base(filepath.Dir(filename))
+	var contentItem models.Content
+	contentItem.Title, _ = frontMatter["title"].(string)
+	contentItem.Date, _ = frontMatter["date"].(string)
+	contentItem.Body = body
+	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
+	contentItem.Collection = filepath.Base(filepath.Dir(filename))
 
-	return &pageItem, nil
-}
-
-func loadData(directory string) (map[string]interface{}, error) {
-	data := make(map[string]interface{})
-	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
-		if filepath.Ext(path) == ".json" {
-			fileData, err := os.ReadFile(path)
-			if err != nil {
-				return err
-			}
-
-			var jsonData interface{}
-			if err := json.Unmarshal(fileData, &jsonData); err != nil {
-				return err
-			}
-
-			key := filepath.Base(path)
-			key = strings.TrimSuffix(key, filepath.Ext(key)) // Use filename as the key
-			data[key] = jsonData
-		}
-		return nil
-	})
-	if err != nil {
-		return nil, err
-	}
-	return data, nil
+	return &contentItem, nil
 }
 
 func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
@@ -243,7 +215,7 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 
 	log.Printf("Constructed file path: %s", filePath)
 
-	data, err := loadData("data")
+	data, err := utils.LoadData(cfg.DataPath)
 	if err != nil {
 		log.Printf("Failed to load data: %v", err)
 	}
@@ -258,7 +230,7 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	collection := filepath.Base(filepath.Dir(filePath))
 
 	templateData := struct {
-		Page *models.Page
+		Page *models.Content
 		Data map[string]interface{}
 	}{
 		Page: p,
@@ -266,46 +238,13 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	}
 
 	tmplName := collection
-	tmpl := templates.Lookup(tmplName + ".html")
+	tmpl := utils.Templates.Lookup(tmplName + ".html")
 	if tmpl == nil {
 		log.Printf("Template %s.html not found, using default site.html", tmplName)
-		tmpl = templates.Lookup("site.html")
+		tmpl = utils.Templates.Lookup("site.html")
 	}
 
-	renderTemplate(w, tmplName, templateData)
-}
-
-func markDowner(args ...interface{}) template.HTML {
-	s := blackfriday.Run([]byte(fmt.Sprintf("%s", args...)))
-	return template.HTML(s)
-}
-
-// var templates = template.Must(template.New("").Funcs(template.FuncMap{"markDown": markDowner}).ParseGlob("templates/*.html"))
-
-var templates *template.Template
-
-func loadTemplates() error {
-	var err error
-	templates, err = template.New("").Funcs(template.FuncMap{"markDown": markDowner}).ParseGlob("templates/*.html")
-	if err != nil {
-		return fmt.Errorf("error loading templates: %w", err)
-	}
-	return nil
-}
-
-func init() {
-	err := loadTemplates()
-	if err != nil {
-		log.Fatalf("Failed to load templates: %v", err)
-	}
-}
-
-func renderTemplate(w http.ResponseWriter, tmpl string, content interface{}) {
-	err := templates.ExecuteTemplate(w, tmpl, content)
-	if err != nil {
-		log.Printf("Error rendering template: %v", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	utils.RenderTemplateDev(w, tmplName, templateData)
 }
 
 var validPath = regexp.MustCompile("^/([a-zA-Z0-9]+)$")
@@ -347,7 +286,7 @@ func StartServer() {
 		log.Fatalf("Failed to copy theme CSS to assets directory: %v", err)
 	}
 
-	err = loadTemplates()
+	err = utils.LoadTemplates()
 	if err != nil {
 		log.Fatalf("Failed to load templates: %v", err)
 	}

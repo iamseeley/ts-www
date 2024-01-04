@@ -4,13 +4,83 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
+	"html/template"
 	"io"
+	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/go-yaml/yaml"
+	"github.com/russross/blackfriday/v2"
 )
+
+func LoadData(directory string) (map[string]interface{}, error) {
+	data := make(map[string]interface{})
+	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
+		if filepath.Ext(path) == ".json" {
+			fileData, err := os.ReadFile(path)
+			if err != nil {
+				return err
+			}
+
+			var jsonData interface{}
+			if err := json.Unmarshal(fileData, &jsonData); err != nil {
+				return err
+			}
+
+			key := filepath.Base(path)
+			key = strings.TrimSuffix(key, filepath.Ext(key)) // Use filename as the key
+			data[key] = jsonData
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+func MarkDowner(args ...interface{}) template.HTML {
+	s := blackfriday.Run([]byte(fmt.Sprintf("%s", args...)))
+	return template.HTML(s)
+}
+
+var Templates *template.Template
+
+func LoadTemplates() error {
+	var err error
+	Templates, err = template.New("").Funcs(template.FuncMap{"markDown": MarkDowner, "parseDate": ParseDate, "now": Now}).ParseGlob("templates/*.html")
+	if err != nil {
+		return fmt.Errorf("error loading templates: %w", err)
+	}
+	return nil
+}
+
+func Init() {
+	err := LoadTemplates()
+	if err != nil {
+		log.Fatalf("Failed to load templates: %v", err)
+	}
+}
+
+func RenderTemplateStatic(tmpl string, content interface{}) {
+	err := Templates.ExecuteTemplate(os.Stdout, tmpl, content)
+	if err != nil {
+		log.Printf("Error rendering template: %v", err)
+	}
+}
+
+func RenderTemplateDev(w http.ResponseWriter, tmpl string, content interface{}) {
+	err := Templates.ExecuteTemplate(w, tmpl, content)
+	if err != nil {
+		log.Printf("Error rendering template: %v", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
 
 func ParseFrontMatter(content []byte) (map[string]interface{}, []byte, error) {
 	frontMatter := make(map[string]interface{})
@@ -182,6 +252,21 @@ func ConvertMarkdownToJSON(contentDir, dataDir string) error {
 	return nil
 }
 
+// ParseDate parses a date string in "YYYY-MM-DD" format and returns a time.Time object.
+func ParseDate(dateStr string) time.Time {
+	t, err := time.Parse("2006-01-02", dateStr)
+	if err != nil {
+		// Handle the error according to your needs
+		return time.Time{} // return zero time on error
+	}
+	return t
+}
+
+// Now returns the current time as a time.Time object.
+func Now() time.Time {
+	return time.Now()
+}
+
 // func FilterNotesLastSixMonths(notes []models.Page) []models.Page {
 //     filteredNotes := []models.Page{}
 //     sixMonthsAgo := time.Now().AddDate(0, -6, 0) // Six months ago
@@ -195,4 +280,45 @@ func ConvertMarkdownToJSON(contentDir, dataDir string) error {
 //         }
 //     }
 //     return filteredNotes
+// }
+
+// func GetRecentNotes(dataDir string) ([]models.Content, error) {
+// 	allData, err := LoadData(dataDir)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("error loading data: %v", err)
+// 	}
+
+// 	// Extract the notes data
+// 	notesData, ok := allData["notes"]
+// 	if !ok {
+// 		return nil, fmt.Errorf("notes data not found")
+// 	}
+
+// 	var recentNotes []models.Content
+// 	threeMonthsAgo := time.Now().AddDate(0, -3, 0)
+
+// 	// Assuming notesData is a map of string to another map
+// 	for _, note := range notesData.(map[string]interface{}) {
+// 		frontMatter := note.(map[string]interface{})["frontMatter"].(map[string]interface{})
+// 		dateString, ok := frontMatter["date"].(string)
+// 		if !ok {
+// 			continue // Skip if date is not a string or not present
+// 		}
+
+// 		noteDate, err := time.Parse("2006-01-02", dateString)
+// 		if err != nil {
+// 			log.Printf("Error parsing date: %v", err)
+// 			continue // Skip notes with invalid date format
+// 		}
+
+// 		if noteDate.After(threeMonthsAgo) {
+// 			// Construct Content object and add to recentNotes
+// 			recentNote := models.Content{
+// 				// Populate the fields as needed based on your Content struct
+// 			}
+// 			recentNotes = append(recentNotes, recentNote)
+// 		}
+// 	}
+
+// 	return recentNotes, nil
 // }

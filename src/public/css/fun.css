@@ -164,6 +164,11 @@ aside p {
     margin-top: .375em;
 }
 
+.log p {
+    margin-bottom: .4em;
+    margin-top: .375em;
+}
+
 section {
     margin-bottom: 4em;
 }
@@ -193,6 +198,13 @@ time {
     font-size: .85em;
     margin-left: .25em;
 }
+
+/* .log-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} */
 
 .home-list {
     padding: 0;

@@ -1,20 +1,26 @@
-[
-    {
-        "title": "Go-Forth",
-        "description": "A static site generator written in Go",
-        "date": "2023",
-        "url": "https://github.com/go-forth2.0",
-        "why": "Why did you make this project?",
-        "featured": true
-
-    },
-    {
-        "title": "Wando-Ui",
-        "description": "TypeScript & Tailwind CSS component collection",
-        "date": "2023",
-        "url": "https://github.com/wando-ui",
-        "why": "Why did you make this project?",
-        "featured": true
-
+{
+  "go-forth": {
+    "body": "",
+    "frontMatter": {
+      "date": 2023,
+      "description": "A static site generator written in Go",
+      "draft": false,
+      "featured": true,
+      "link": "https://github.com/iamseeley/go-forth",
+      "title": "Go-Forth",
+      "why": "Why did you make this project?"
     }
-]
+  },
+  "wando-ui": {
+    "body": "",
+    "frontMatter": {
+      "date": 2023,
+      "description": "TypeScript \u0026 Tailwind CSS component collection",
+      "draft": false,
+      "featured": true,
+      "link": "https://github.com/iamseeley/wando-ui",
+      "title": "Wando-Ui",
+      "why": "Why did you make this project?"
+    }
+  }
+}

@@ -26,7 +26,7 @@
                 {{ if .frontMatter.featured }}
                    
                     <li class="featured-posts">
-                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>:
+                        <strong><a target="_blank" rel="noopener noreferrer" href="{{ .frontMatter.link }}">{{ .frontMatter.title }}</a></strong>:
                         {{ .frontMatter.description }}
                     </li>
                     
@@ -51,14 +51,15 @@
             <section>
                 <h3>Recent Logs</h3>
                 <ul class="home-list">
-                {{ range .Data.logs }}
-                {{ if .frontMatter.featured }}
-                    <li>
-                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
-                        <time><em>{{ .frontMatter.date }}</em></time>
-                    </li>
-                {{end}}
-                {{end}}
+                    {{ range .Data.logs }}
+                        <li class="featured-posts">
+                            <article class="log">
+                            <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
+                            <time><em>{{ .frontMatter.date }}</em></time>
+                            <p>{{ .frontMatter.content }}</p>
+                            </article>
+                        </li>
+                    {{end}}
                 </ul>
             </section>
             <section>
@@ -83,27 +84,50 @@
         {{ end }}
 
         {{ if eq .Page.Title "Collections"}}
-            {{ range .Data.collections }}
-                <div>
-                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
-                    <p>{{ .frontMatter.type }}</p>
-                    <p>{{ .frontMatter.description }}</p>
-                </div>
-            {{ end }}
+        {{ range .Data.collections }}
+        {{ with .frontMatter }}
+            
+                <ul class="home-list">
+                    <li>
+                    <p>{{ .type }}</p>
+                    <a href="{{ .link }}">{{ .title }}</a>
+                    <p>{{ .author }}</p>
+                    <p>{{ .summary }}</p>
+                    </li>
+                </ul>
+           
+        {{ end }}
+        {{ end }}
         {{ else if eq .Page.Title "Posts" }}
-            {{ range .Data.posts}}
-                <div class="post-range">
-                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
-                    <time><em>{{ .frontMatter.date }}</em></time>
-                </div>
-            {{ end }}
+            <ul class="home-list">
+                {{ range .Data.posts }}
+                    <li class="featured-posts">
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.date }}</em></time>
+                    </li>
+                {{end}}
+            </ul>
         {{ else if eq .Page.Title "Notes" }}
-                {{ range .Data.notes}}
-                <div>
-                    <a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a>
-                    <p>{{ .frontMatter.date }}</p>
-                </div>
-                {{ end }}
+            <ul class="home-list">
+                {{ range .Data.notes }}
+                    <li class="featured-posts">
+                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                        <time><em>{{ .frontMatter.date }}</em></time>
+                    </li>
+                {{end}}
+            </ul>
+            {{ else if eq .Page.Title "Captain's Log" }}
+            <ul class="home-list">
+                {{ range .Data.logs }}
+                    <li class="featured-posts">
+                        <article class="log">
+                        <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
+                        <time><em>{{ .frontMatter.date }}</em></time>
+                        <p>{{ .frontMatter.content }}</p>
+                        </article>
+                    </li>
+                {{end}}
+            </ul>
         {{ end }}
         
         {{template "_bottom" .}}
