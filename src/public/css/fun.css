@@ -1,17 +1,18 @@
 :root {
-    --bg-color: #31525B;
-    --fg-color: #5f7980;
-    --box-shadow: #8fa1a6;
-    --text-color-1: #eef1f1;
-    --text-color-2: #bfc9cc;
+    --bg-color: #1e2021;
+    --fg-color: #404345; /* Slightly lighter shade for foreground */
+    --box-shadow: #8fa1a6; /* As before, for contrast */
+    --text-color-1: #f5f5f5; /* Much lighter for primary text */
+    --text-color-2: #707477;
     --font-family: 'Arial', sans-serif;
-    --acent: #FFA101;
+    --acent: #5675D2;
+    --acent-lighter: #678CFC;
     --content-width: 39em;
 }
 
 
 header {
-   
+    margin-top: .45em;
     padding: .75em;
 }
 
@@ -42,18 +43,18 @@ nav a {
     color: white;
     border-radius: 4px;
     text-decoration: none;
-    box-shadow: 2px 2px 0px #FAE6B1;
+    /* box-shadow: 2px 2px 0px #FAE6B1; */
     font-weight: bold;
 }
 
-nav a:active, nav a:focus-visible {
+nav a:active, nav a:focus {
     transform: translate(1px, 1px);
     box-shadow: none;
 }
 
 
 nav a:hover {
-    background-color: #ffb330;
+    background-color: var(--acent-lighter);
 }
 
 .update {
@@ -108,11 +109,11 @@ nav a:hover {
 }
 
 .socials a:hover {
-    color: var(--acent);
+    color: var(--acent-lighter);
 }
 
 .socials a:hover svg {
-    stroke: var(--acent);
+    stroke: var(--acent-lighter);
 }
 
 
@@ -141,7 +142,7 @@ a {
     color: inherit;
 }
 a:hover {
-    text-decoration-color: var(--text-color-1);
+    text-decoration-color: var(--acent-lighter);
 }
 
 /* aside {
