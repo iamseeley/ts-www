@@ -3,10 +3,11 @@
 
     <section>
         <h2>{{.Page.Title}}</h2>
+        <time><em>{{.Page.Date}}</em></time>
         <article>
-            {{ .Page.Body | markDown }}
+        {{ .Page.Body | markDown }}
         </article>
     </section>
 
-    {{template "_bottom" .}}
+{{template "_bottom" .}}
 {{ end }}
