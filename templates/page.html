@@ -67,20 +67,27 @@
             <section>
                 <h3>Collections</h3>
                 <ul class="home-list">
-                {{ range .Data.collections }}
-                {{ if .frontMatter.featured }}
+                    <li class="featured-posts">
+                        <a href="/collections#books"><strong>Books</strong></a>
+                    </li>
+                    <li class="featured-posts">
+                        <a href="/collections#blogs"><strong>Blogs</strong></a>
+                    </li>
+                    
+                <!-- {{ range .Data.collections }}
+                {{ with .frontMatter }}
                     <li>
-                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
-                        <time><em>{{ .frontMatter.type }}</em></time>
+                        
+                    
                     </li>
                 {{end}}
-                {{end}}
+                {{end}} -->
                 </ul>
             </section>
             <section>
             <aside>
                 <p><strong>About this site</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>This site is made from a <a href="https://github.com/iamseeley/go-forth">static site generator</a> I wrote in Go. I write my page content in Markdown files and the files get converted to html! Over the past few years I've built multiple portfolio websites, mostly in React and with a framework like Next.js. Not to say I don't love React and Next.js❤️, but I decided to go frameworkless for my personal site and build out the features I needed myself. So, this site is a work in progress and always will be. I'm having fun with it.</p>
             </aside>
         </section>
         {{ end }}
@@ -88,16 +95,18 @@
         {{ if eq .Page.Title "Collections"}}
         {{ range .Data.collections }}
         {{ with .frontMatter }}
-            
-                <ul class="home-list">
-                    <li>
-                    <p>{{ .type }}</p>
-                    <a href="{{ .link }}">{{ .title }}</a>
-                    <p>{{ .author }}</p>
-                    <p>{{ .summary }}</p>
-                    </li>
-                </ul>
-           
+                <div class="card">
+                    <div class="collect-header">
+                    <div>
+                    <a href="{{ .link }}"><strong>{{ .title }}</strong></a>
+                    {{ .author }}
+                    </div>
+                    <div>
+                    <span>{{ .type }}</span>
+                    </div>
+                    </div>
+                    <p class="collect-p">{{ .summary }}</p>
+                </div>
         {{ end }}
         {{ end }}
         {{ else if eq .Page.Title "Posts" }}

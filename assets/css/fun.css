@@ -32,7 +32,7 @@ nav {
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 2.5em;
+    gap: 2em;
     justify-content: space-between;
 }
 
@@ -46,7 +46,7 @@ nav a {
     font-weight: bold;
 }
 
-nav a:active, nav a:focus {
+nav a:active, nav a:focus-visible {
     transform: translate(1px, 1px);
     box-shadow: none;
 }
@@ -171,6 +171,31 @@ aside p {
 
 .page-body {
     margin-bottom: 0;
+}
+
+.card {
+    padding: 2em;
+    background-color: var(--fg-color);
+    margin-bottom: .85em;
+}
+
+.card span {
+    color: var(--acent);
+}
+
+.collect-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.collect-p {
+    margin-bottom: 0;
+}
+
+.collect-header a {
+    margin-right: .5em;
 }
 
 section {
