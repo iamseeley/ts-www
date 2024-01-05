@@ -1,10 +1,12 @@
 {{ define "page" }}
 {{template "_top" .}}
 
-        <section>
+        <section class="page-body">
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "Home"}}
+            <section>
+            </section>
             <section>
                 <h3>Featured Posts</h3>
                 <ul class="home-list">

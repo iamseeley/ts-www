@@ -169,6 +169,10 @@ aside p {
     margin-top: .375em;
 }
 
+.page-body {
+    margin-bottom: 0;
+}
+
 section {
     margin-bottom: 4em;
 }
