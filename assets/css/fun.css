@@ -10,6 +10,21 @@
     --content-width: 39em;
 }
 
+body {
+    padding-top: .25em;
+    margin: 0;
+    border-top: 4px solid var(--acent);
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+}
+
+main {
+    padding: .75em;
+    /* max-width: 624px; */
+    margin-bottom: 1.875em;
+    color: var(--text-color-1);
+}
+
 
 header {
     margin-top: .45em;
@@ -20,6 +35,10 @@ footer {
     color: var(--text-color-1);
     opacity: 65%;
     padding: .75em;
+}
+
+section {
+    margin-bottom: 4em;
 }
 
 .banner {
@@ -122,20 +141,7 @@ nav a:hover {
     margin: 0 auto;
 }
 
-body {
-    padding-top: .25em;
-    margin: 0;
-    border-top: 4px solid var(--acent);
-    background-color: var(--bg-color);
-    font-family: var(--font-family);
-}
 
-main {
-    padding: .75em;
-    /* max-width: 624px; */
-    margin-bottom: 1.875em;
-    color: var(--text-color-1);
-}
 
 a {
     text-decoration-color: var(--acent);
@@ -181,7 +187,7 @@ aside p {
 }
 
 .card span {
-    color: var(--acent);
+    color: var(--acent-lighter);
 }
 
 .collect-header {
@@ -199,9 +205,7 @@ aside p {
     margin-right: .5em;
 }
 
-section {
-    margin-bottom: 4em;
-}
+
 
 h2 {
     font-size: 2em;
