@@ -179,33 +179,6 @@ func createTemplateForDir(dirName, templateDir string) {
 	}
 }
 
-func loadPageFromDirectory(directory, title string) (*models.Content, error) {
-	filename := directory + title
-	content, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	frontMatter, body, err := utils.ParseFrontMatter(content)
-	if err != nil {
-		return nil, err
-	}
-
-	cfg, err := config.LoadConfig("./config.json") // Load configuration
-	if err != nil {
-		return nil, err
-	}
-
-	var contentItem models.Content
-	contentItem.Title, _ = frontMatter["title"].(string)
-	contentItem.Date, _ = frontMatter["date"].(string)
-	contentItem.Body = body
-	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
-	contentItem.Collection = filepath.Base(filepath.Dir(filename))
-
-	return &contentItem, nil
-}
-
 func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	cfg, err := config.LoadConfig("./config.json")
 	if err != nil {
@@ -220,7 +193,7 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 		log.Printf("Failed to load data: %v", err)
 	}
 
-	p, err := loadPageFromDirectory(cfg.ContentPath, filePath)
+	p, err := utils.LoadPageFromDirectory(cfg.ContentPath, filePath)
 	if err != nil {
 		log.Printf("Error loading page: %v", err) // Log the error for debugging
 		http.Error(w, "Page not found", http.StatusNotFound)

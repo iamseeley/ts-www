@@ -13,10 +13,39 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+	"ts-www/build/internal/config"
+	"ts-www/build/internal/models"
 
 	"github.com/go-yaml/yaml"
 	"github.com/russross/blackfriday/v2"
 )
+
+func LoadPageFromDirectory(directory, title string) (*models.Content, error) {
+	filename := directory + title
+	content, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	frontMatter, body, err := ParseFrontMatter(content)
+	if err != nil {
+		return nil, err
+	}
+
+	cfg, err := config.LoadConfig("./config.json") // Load configuration
+	if err != nil {
+		return nil, err
+	}
+
+	var contentItem models.Content
+	contentItem.Title, _ = frontMatter["title"].(string)
+	contentItem.Date, _ = frontMatter["date"].(string)
+	contentItem.Body = body
+	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
+	contentItem.Collection = filepath.Base(filepath.Dir(filename))
+
+	return &contentItem, nil
+}
 
 func LoadData(directory string) (map[string]interface{}, error) {
 	data := make(map[string]interface{})
@@ -67,11 +96,21 @@ func Init() {
 	}
 }
 
-func RenderTemplateStatic(tmpl string, content interface{}) {
-	err := Templates.ExecuteTemplate(os.Stdout, tmpl, content)
+func RenderTemplateStatic(outputPath, tmpl string, content interface{}) error {
+	// Create or open the file where the HTML will be saved
+	outputFile, err := os.Create(outputPath)
 	if err != nil {
-		log.Printf("Error rendering template: %v", err)
+		return fmt.Errorf("error creating file: %v", err)
 	}
+	defer outputFile.Close()
+
+	// Execute the template and write the output to the file
+	err = Templates.ExecuteTemplate(outputFile, tmpl, content)
+	if err != nil {
+		return fmt.Errorf("error rendering template: %v", err)
+	}
+
+	return nil
 }
 
 func RenderTemplateDev(w http.ResponseWriter, tmpl string, content interface{}) {

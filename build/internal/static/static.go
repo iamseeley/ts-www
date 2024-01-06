@@ -8,42 +8,7 @@ import (
 	"ts-www/build/internal/config"
 	"ts-www/build/internal/models"
 	"ts-www/build/internal/utils"
-
-	"github.com/russross/blackfriday/v2"
 )
-
-// Load site pages written in Markdown from a directory
-func loadPageFromDirectory(directory, title string) (*models.Content, error) {
-	filename := directory + title
-	content, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-
-	frontMatter, body, err := utils.ParseFrontMatter(content)
-	if err != nil {
-		return nil, err
-	}
-
-	var page models.Content
-	if title, ok := frontMatter["title"].(string); ok {
-		page.Title = title
-	}
-	if description, ok := frontMatter["description"].(string); ok {
-		page.Description = description
-	}
-
-	cfg, err := config.LoadConfig("./config.json") // Load configuration
-	if err != nil {
-		return nil, err
-	}
-
-	page.Theme = cfg.ThemeName
-	page.Body = blackfriday.Run(body)
-	page.Collection = filepath.Base(filepath.Dir(filename))
-
-	return &page, nil
-}
 
 func init() {
 	err := utils.LoadTemplates()
@@ -59,7 +24,7 @@ func BuildSite() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	data, err := utils.LoadData("data")
+	data, err := utils.LoadData(cfg.DataPath)
 	if err != nil {
 		log.Fatalf("Failed to load data: %v", err)
 	}
@@ -85,8 +50,6 @@ func BuildSite() {
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
-
-	// ... rest of the BuildSite function ...
 
 	// Iterate through all Markdown files in the content directory
 	err = filepath.Walk(contentDir, func(path string, info os.FileInfo, err error) error {
@@ -127,13 +90,7 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 		return err
 	}
 
-	// page, err := loadPageFromDirectory(filepath.Dir(mdPath)+"/", filepath.Base(mdPath))
-	// if err != nil {
-	// 	log.Printf("Error loading page from directory: %v", err)
-	// 	return err
-	// }
-
-	page, err := loadPageFromDirectory(filepath.Dir(mdPath)+"/", filepath.Base(mdPath))
+	page, err := utils.LoadPageFromDirectory(filepath.Dir(mdPath)+"/", filepath.Base(mdPath))
 	if err != nil {
 		log.Printf("Error loading page: %v", err)
 
@@ -151,7 +108,7 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 		tmpl = utils.Templates.Lookup("site.html")
 	}
 
-	newdata, err := utils.LoadData("data")
+	newdata, err := utils.LoadData(cfg.DataPath)
 	if err != nil {
 		log.Printf("Failed to load data: %v", err)
 	}
