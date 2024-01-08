@@ -1,6 +1,21 @@
 {
+  "c": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "Jan 8, 2024",
+      "draft": true,
+      "featured": false,
+      "summary": "A short intro to C/C++ by way of building a static site generator.",
+      "tags": [
+        "c/c++",
+        "html"
+      ],
+      "title": "Basic C/C++",
+      "url": "/notes/c"
+    }
+  },
   "cs-notes": {
-    "body": "\n\n[Basic C/C++](/notes/c)\n[Algorithms](/notes/algorithms)\n[Data Structures](/notes/data-structures)\n[OOP](/notes/oop)\n[Functional Programming](/notes/functional-programming)\n[Systems Programming](/notes/systems-programming)\n[Computer Architecture](/notes/computer-architecture)\n[Frontend](/notes/frontend)\n[React](/notes/react)\n[CSS](/notes/css)\n",
+    "body": "\n\n- [Basic C/C++](/notes/c)\n- [Algorithms](/notes/algorithms)\n- [Data Structures](/notes/data-structures)\n- [OOP](/notes/oop)\n- [Functional Programming](/notes/functional-programming)\n- [Systems Programming](/notes/systems-programming)\n- [Computer Architecture](/notes/computer-architecture)\n- [Frontend](/notes/frontend)\n- [React](/notes/react)\n- [CSS](/notes/css)\n- [Machine Learning](/notes/machine-learning)\n- [Leet 150](/notes/leet-150)",
     "frontMatter": {
       "date": "Oct 15, 2023",
       "description": "The topics I'm covering for my CS Program and interview prep.",
@@ -12,7 +27,7 @@
         "university",
         "interview"
       ],
-      "title": "CS Note Compilation",
+      "title": "CS Notes",
       "url": "/notes/cs-notes"
     }
   }

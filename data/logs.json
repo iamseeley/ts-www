@@ -1,4 +1,13 @@
 {
+  "log2": {
+    "body": "\n",
+    "frontMatter": {
+      "content": "In the next few days I'm going to add more components to wando-ui, update the build processes in go-forth 2.0, finalize the design for a client's site, and write some notes!",
+      "date": "Jan 8, 2024",
+      "draft": false,
+      "title": "Jan 2024 - to dos"
+    }
+  },
   "newyear": {
     "body": "\n",
     "frontMatter": {
