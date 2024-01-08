@@ -1,18 +1,19 @@
 {
-  "cs-topics": {
-    "body": "\n\n",
+  "cs-notes": {
+    "body": "\n\n[Basic C/C++](/notes/c)\n[Algorithms](/notes/algorithms)\n[Data Structures](/notes/data-structures)\n[OOP](/notes/oop)\n[Functional Programming](/notes/functional-programming)\n[Systems Programming](/notes/systems-programming)\n[Computer Architecture](/notes/computer-architecture)\n[Frontend](/notes/frontend)\n[React](/notes/react)\n[CSS](/notes/css)\n",
     "frontMatter": {
       "date": "Oct 15, 2023",
-      "description": "The topics I'm covering for my CS Program.",
+      "description": "The topics I'm covering for my CS Program and interview prep.",
       "draft": false,
       "featured": true,
-      "summary": "A brief summary of the note.",
+      "summary": "Computer science (CS) is the study of computers and algorithmic processes, including their principles, their hardware and software designs, their applications, and their impact on society.",
       "tags": [
-        "tag1",
-        "tag2"
+        "cs",
+        "university",
+        "interview"
       ],
-      "title": "CS-Topics",
-      "url": "/notes/cs-topics"
+      "title": "CS Note Compilation",
+      "url": "/notes/cs-notes"
     }
   }
 }
