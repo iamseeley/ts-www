@@ -37,6 +37,16 @@ footer {
     padding: .75em;
 }
 
+.og-image {
+    margin: auto;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.og-image h1 {
+    color: var(--text-color-1);
+}
+
 section {
     margin-bottom: 4em;
 }

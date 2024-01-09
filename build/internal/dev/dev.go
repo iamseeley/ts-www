@@ -10,6 +10,7 @@ import (
 	"strings"
 	"ts-www/build/internal/config"
 	"ts-www/build/internal/models"
+	"ts-www/build/internal/ogimage"
 	"ts-www/build/internal/utils"
 
 	"github.com/fsnotify/fsnotify"
@@ -276,6 +277,7 @@ func StartServer() {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
 
+	go ogimage.GenerateAllOGImages(cfg.ContentPath, "assets/og-image/")
 	go watchContentDirectory("content", "templates")
 	go watchForNewMarkdownFiles("content")
 
