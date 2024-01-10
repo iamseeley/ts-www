@@ -6,6 +6,11 @@ async function takeScreenshot(tempHTMLFilePath, outputPath) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
+    // Set viewport to 2:1 aspect ratio, adjust width as needed
+    const width = 1200;  // Width can be any value, height will be half of it
+    const height = width / 2;
+    await page.setViewport({ width: width, height: height });
+
     // Convert file path to a URL
     const fileUrl = 'file://' + path.resolve(tempHTMLFilePath);
 
