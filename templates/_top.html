@@ -10,8 +10,11 @@
     <title>{{.Page.Title}} ~ Thomas Seeley</title>
     {{ end }}
     <meta name="description" content="{{ .Page.Description }}">
+    <meta property="og:title" content="{{ .Page.Title }} ~ Thomas Seeley">
+    <meta property="og:description" content="{{ .Page.Description }}">
     <meta property="og:image" content="{{ .Page.OGImageURL }}">
-    <meta property="twitter:card" content="{{ .Page.OGImageURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="{{ .Page.OGImageURL }}">
     <link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
