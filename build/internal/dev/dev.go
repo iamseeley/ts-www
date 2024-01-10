@@ -201,6 +201,11 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 		return
 	}
 
+	// Generate the OG Image URL
+	ogImageFileName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
+	ogImageUrl := "/public/og-image/" + ogImageFileName
+	p.OGImageURL = ogImageUrl
+
 	collection := filepath.Base(filepath.Dir(filePath))
 
 	templateData := struct {

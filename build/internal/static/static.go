@@ -97,6 +97,11 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 		return err // Log the error for debugging
 	}
 
+	// Generate the OG Image URL
+	ogImageFileName := strings.TrimSuffix(filepath.Base(outputPath), filepath.Ext(outputPath)) + "-og-image.png"
+	ogImageUrl := "/public/og-image/" + ogImageFileName
+	page.OGImageURL = ogImageUrl
+
 	// Determine template based on the collection (parent directory name)
 	collection := filepath.Base(filepath.Dir(mdPath))
 	tmplName := collection

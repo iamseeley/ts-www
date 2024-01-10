@@ -55,7 +55,7 @@ func GenerateOGImageForFile(filePath, outputDir string) error {
 	}
 
 	// Render the OG image template to the temporary HTML file
-	if err := utils.RenderTemplateStatic(tempHTMLFilePath, "default", page); err != nil {
+	if err := utils.RenderTemplateStatic(tempHTMLFilePath, "og-image", page); err != nil {
 		log.Printf("Error rendering OG image template: %v", err)
 		return err
 	}
@@ -73,6 +73,8 @@ func GenerateOGImageForFile(filePath, outputDir string) error {
 	if err := os.Remove(tempHTMLFilePath); err != nil {
 		log.Printf("Error removing temporary file: %v", err)
 	}
+
+	page.OGImageURL = "/public/og-image/" + imageName
 
 	return nil
 }
