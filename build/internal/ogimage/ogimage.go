@@ -48,6 +48,11 @@ func GenerateOGImageForFile(filePath, outputDir string) error {
 	imageName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
 	imagePath := filepath.Join(outputDir, imageName)
 
+	if _, err := os.Stat(imagePath); err == nil {
+		log.Printf("OG image already exists for %s, skipping...", filePath)
+		return nil
+	}
+
 	// Ensure the output directory exists
 	if err := os.MkdirAll(filepath.Dir(imagePath), os.ModePerm); err != nil {
 		log.Printf("Error creating output directory: %v", err)
