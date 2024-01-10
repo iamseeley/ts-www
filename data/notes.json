@@ -30,5 +30,16 @@
       "title": "CS Notes",
       "url": "/notes/cs-notes"
     }
+  },
+  "mungers-models": {
+    "body": "\n\n### Circle of Competence\n- Identify your core strengths\n- Acknowledge areas where you need improvement or external help\n\n### Inversion\n- List potential pitfalls in your current projects or career path\n- Develop strategies to mitigate these risks\n\n### Second-Order Thinking\n- For each major decision, consider the long-term impacts and how they align with your goals\n- Evaluate the indirect effects of your decisions on your career, education, and life in general\n\n### Margin of Safety\n-  Set aside contingency time and resources for projects\n-  Plan for financial buffers in your endeavors\n\n### Lollapalooza Effect\n- Combine different skills and knowledge areas in unique ways for problem-solving\n- Seek interdisciplinary approaches\n\n### Confirmation Bias Avoidance\n- Actively seek out feedback, even if it challenges your current methods\n- Regularly review and update your beliefs and methods based on new information\n\n\n",
+    "frontMatter": {
+      "date": "Jan, 10 2024",
+      "description": "A few of Charlie Munger's mental models to improve decision making.",
+      "draft": false,
+      "featured": false,
+      "title": "Munger's Models",
+      "url": "/notes/mungers-models"
+    }
   }
 }
