@@ -1,4 +1,21 @@
 {
+  "base": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "Oct 15, 2023",
+      "description": "The topics I'm covering for my CS Program and interview prep.",
+      "draft": false,
+      "featured": true,
+      "summary": "Computer science (CS) is the study of computers and algorithmic processes, including their principles, their hardware and software designs, their applications, and their impact on society.",
+      "tags": [
+        "cs",
+        "university",
+        "interview"
+      ],
+      "title": "CS Notes",
+      "url": "/notes/cs-notes"
+    }
+  },
   "c": {
     "body": "\n",
     "frontMatter": {
@@ -52,6 +69,23 @@
       "featured": true,
       "title": "Munger's Models",
       "url": "/notes/mungers-models"
+    }
+  },
+  "test": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "Oct 15, 2023",
+      "description": "The topics I'm covering for my CS Program and interview prep.",
+      "draft": false,
+      "featured": true,
+      "summary": "Computer science (CS) is the study of computers and algorithmic processes, including their principles, their hardware and software designs, their applications, and their impact on society.",
+      "tags": [
+        "cs",
+        "university",
+        "interview"
+      ],
+      "title": "CS Notes",
+      "url": "/notes/cs-notes"
     }
   }
 }

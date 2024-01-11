@@ -1,4 +1,13 @@
 {
+  "base": {
+    "body": "\n",
+    "frontMatter": {
+      "content": null,
+      "date": "YYYY-MM-DD",
+      "draft": false,
+      "title": "Your Log Title"
+    }
+  },
   "log2": {
     "body": "\n",
     "frontMatter": {

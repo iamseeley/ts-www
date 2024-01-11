@@ -10,6 +10,15 @@
       "type": "blog"
     }
   },
+  "base": {
+    "body": "\n",
+    "frontMatter": {
+      "description": "A brief description of the collection",
+      "draft": false,
+      "title": "Your Collection Title",
+      "type": "Link, Book, Blog, etc...?"
+    }
+  },
   "sapiens": {
     "body": "",
     "frontMatter": {

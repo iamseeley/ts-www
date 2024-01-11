@@ -6,6 +6,14 @@
       "title": "About"
     }
   },
+  "base": {
+    "body": "\n",
+    "frontMatter": {
+      "description": "A brief description of the page",
+      "draft": true,
+      "title": "Your Page Title"
+    }
+  },
   "collections": {
     "body": "\n\n## Collections\n\n",
     "frontMatter": {
