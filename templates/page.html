@@ -54,6 +54,7 @@
                 <h3>Recent Logs</h3>
                 <ul class="home-list">
                     {{ range .Data.logs }}
+                    {{ if eq .frontMatter.draft false }}
                         <li class="featured-posts">
                             <article class="log">
                             <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
@@ -62,16 +63,17 @@
                             </article>
                         </li>
                     {{end}}
+                    {{end}}
                 </ul>
             </section>
             <section>
                 <h3>Collections</h3>
                 <ul class="home-list">
                     <li class="featured-posts">
-                        <strong></strong><a href="/collections#books">Books</a></strong>
+                        <strong><a href="/collections#books">Books</a></strong>
                     </li>
                     <li class="featured-posts">
-                        <strong></strong><a href="/collections#blogs">Blogs</a></strong>
+                        <strong><a href="/collections#blogs">Blogs</a></strong>
                     </li>
                     
                 <!-- {{ range .Data.collections }}
