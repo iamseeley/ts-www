@@ -5,6 +5,6 @@ summary: "Computer science (CS) is the study of computers and algorithmic proces
 tags: [cs, university, interview]
 date: Oct 15, 2023
 url: /notes/cs-notes
-featured: true
-draft: false
+featured: false
+draft: true
 ---

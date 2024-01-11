@@ -95,6 +95,7 @@
         {{ if eq .Page.Title "Collections"}}
         {{ range .Data.collections }}
         {{ with .frontMatter }}
+        {{ if eq .draft false}}
                 <div class="card">
                     <div class="collect-header">
                     <div>
@@ -107,15 +108,18 @@
                     </div>
                     <p class="collect-p">{{ .summary }}</p>
                 </div>
+        {{end}}
         {{ end }}
         {{ end }}
         {{ else if eq .Page.Title "Posts" }}
             <ul class="home-list">
                 {{ range .Data.posts }}
+                {{ if eq .frontMatter.draft false}}
                     <li class="featured-posts">
                         <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                         <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
+                {{end}}
                 {{end}}
             </ul>
         {{ else if eq .Page.Title "Notes" }}
@@ -132,6 +136,7 @@
             {{ else if eq .Page.Title "Captain's Log" }}
             <ul class="home-list">
                 {{ range .Data.logs }}
+                    {{ if eq .frontMatter.draft false }}
                     <li class="featured-posts">
                         <article class="log">
                         <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
@@ -139,6 +144,7 @@
                         <p>{{ .frontMatter.content }}</p>
                         </article>
                     </li>
+                    {{end}}
                 {{end}}
             </ul>
         {{ end }}

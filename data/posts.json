@@ -4,8 +4,8 @@
     "frontMatter": {
       "date": "Nov 11, 2023",
       "description": "Post 1 this is.",
-      "draft": false,
-      "featured": true,
+      "draft": true,
+      "featured": false,
       "title": "Introductions",
       "url": "/posts/intro"
     }

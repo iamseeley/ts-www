@@ -4,8 +4,8 @@
     "frontMatter": {
       "date": 2023,
       "description": "A static site generator written in Go",
-      "draft": false,
-      "featured": true,
+      "draft": true,
+      "featured": false,
       "link": "https://github.com/iamseeley/go-forth2.0",
       "title": "Go-Forth",
       "why": "Why did you make this project?"

@@ -14,7 +14,7 @@
     "body": "\n",
     "frontMatter": {
       "description": "A brief description of the collection",
-      "draft": false,
+      "draft": true,
       "title": "Your Collection Title",
       "type": "Link, Book, Blog, etc...?"
     }
@@ -23,6 +23,7 @@
     "body": "",
     "frontMatter": {
       "author": "Yuval Noah Harari",
+      "draft": false,
       "link": "https://www.ynharari.com/book/sapiens-2/",
       "summary": "A history of our species.",
       "title": "Sapiens",
