@@ -121,10 +121,12 @@
         {{ else if eq .Page.Title "Notes" }}
             <ul class="home-list">
                 {{ range .Data.notes }}
+                    {{ if eq .frontMatter.draft false }}
                     <li class="featured-posts">
                         <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                         <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
+                    {{end}}
                 {{end}}
             </ul>
             {{ else if eq .Page.Title "Captain's Log" }}

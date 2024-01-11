@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Leet 150 ~ Thomas Seeley</title>
+    
+    <meta name="description" content="">
+    <meta property="og:title" content="Leet 150 ~ Thomas Seeley">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="/public/og-image/leet-150-og-image.png">
+    <meta name="twitter:site" content="@iamseeley">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Leet 150 ~ Thomas Seeley">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="https://tseeley.com/public/og-image/leet-150-og-image.png">
+    <meta property="twitter:image:src" content="https://tseeley.com/public/og-image/leet-150-og-image.png">
+    <link type="text/css" rel="stylesheet" href="/public/css/fun.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <div class="wrap">
+    
+    <header>
+        
+        <nav>
+            
+            <div class="link-container"><a href="/">home</a><a href="/posts">posts</a><a href="/notes">notes</a><a href="/collections">collections</a><a href="/about">about</a><a href="/logs">captain's log</a><a target="_blank" href="/public/cv.pdf">cv</a></div>
+        </nav>
+    </header>
+    <main>
+
+
+	<section>
+		<h2>Leet 150</h2>
+		<time><em>Jan, 11 2024</em></time>
+		<article>
+		<p>Language Choice: Python</p>
+
+<ol>
+<li><p>Merge Sorted Array</p>
+
+<p>Step by step approach:</p>
+
+<ol>
+<li>Start from the end: Since &lsquo;nums1&rsquo; has enough space to accommodate the elements of &lsquo;nums2&rsquo; we start filling &lsquo;nums1&rsquo; from the end. This way we don&rsquo;t have to shift elements around.</li>
+<li>Use three pointers:</li>
+</ol>
+
+<ul>
+<li>i: poinsts to the last element of the non-zero part of nums1 (m-1)</li>
+<li>j: points to the last element of nums2 (n-1)</li>
+<li>k:points to the last position in &lsquo;nums1&rsquo; (m+n-1)
+Why?
+    i: This pointer starts at the end of the meaningful elements in nums1 (i.e., at index m-1). It represents the current element in nums1 that we are considering for merging.
+    j: This pointer starts at the end of nums2 (i.e., at index n-1). It represents the current element in nums2 that we are considering for merging.
+    k: This is the most critical pointer. It starts at the very end of nums1 (i.e., at index m+n-1, the last position available in nums1). This is where we place the next largest element during the merge process.
+Pointer: a pointer is a variable that stores the memory address of another variable.
+Pointers:
+    Memory Address: A pointer holds the address of a variable, which allows for direct access and manipulation of the memory where the data is stored.
+    Indirection: Pointers allow for the level of indirection. Through a pointer, you can access and change the value of the variable it points to.
+    Dynamic Memory Allocation: In some languages, pointers are used to dynamically allocate memory on the heap.</li>
+</ul>
+
+<ol>
+<li>Compare and fill: We compare the elements at i and j and place the larger one at position k, then decrement the respective pointers.</li>
+</ol>
+
+<p>Code:</p>
+
+<pre><code>def merge(nums1, m, nums2, n):
+i, j, k = m-1, n-1, m+n-1
+while i &gt;= 0 and j &gt;= 0:
+    if nums1[i] &gt; nums2[j]:
+        nums1[k] = nums1[i]
+        i -= 1
+    else:
+        nums1[k] = nums2[j]
+        j -= 1
+    k -= 1
+# If there are remaining elements in nums2
+while j &gt;= 0:
+    nums1[k] = nums2[j]
+    j -= 1
+    k -= 1
+</code></pre>
+<p>Time Complexity</p>
+
+<p>O(m+n): Each element from both arrays is looked at once.</p>
+
+<p>Space Complexity</p>
+
+<p>O(1): No extra space is used; the merge is done in place.</p></li>
+
+<li><p>Remove Element</p></li>
+</ol>
+
+		</article>
+	</section>
+
+
+
+</main>
+<footer><p class=""><a href="/about">Thomas Seeley</a> © 2023 — <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">BY-NC-SA 4.0</a></p></footer>
+</div>
+</body>
+</html>
+
+

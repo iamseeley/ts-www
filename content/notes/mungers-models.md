@@ -4,7 +4,7 @@ description: A few of Charlie Munger's mental models to improve decision making.
 date: Jan, 10 2024
 url: /notes/mungers-models
 draft: false
-featured: false
+featured: true
 ---
 
 ### Circle of Competence
