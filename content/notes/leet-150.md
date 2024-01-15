@@ -57,3 +57,120 @@ Language Choice: Python
     O(1): No extra space is used; the merge is done in place.
 
 2. Remove Element
+    Initial Thoughts: Idea is to iterate through the array and maintain a separate index for the next position where a non-val element should be placed.
+    Approach:
+    1. Intialize Two Pointers (pointers hold the memory address of a variable)
+        - i: this pointer will iterate over each element in the array
+        - k or index: this pointer will keep track of the position where the next non-'val' element should be placed. Intially this pointer will be set to 0.
+    2. Iterate Over the Array
+        - For each element in 'nums', if the element is not equal to 'val', we place it at the 'k'th position and increment k by 'l'. This way all the non='val' elements are moved to the start of the array. 
+    3. Result
+        - After the iteration 'k' will be the count of elements in 'nums' that are not equal to 'val' and the first 'k' elements of 'nums' will be the elements that are not 'val'.
+    
+    Code: 
+    ```
+    def removeElement(nums, val):
+    k = 0
+    for i in range(len(nums)):
+        if nums[i] != val:
+            nums[k] = nums[i]
+            k += 1
+    return k
+
+    ```
+
+    **In computer science, an in-place algorithm is an algorithm that operates directly on the input data structure without requiring extra space proportional to the input size. In other words, it modifies the input in place, without creating a separate copy of the data structure. An algorithm which is not in-place is sometimes called not-in-place or out-of-place. -Wikipedia
+
+    Time Complexity
+
+    O(n): Where n is the length of nums. We are iterating through the array once.
+
+    Space Complexity
+
+    O(1): No extra space is used. The modifications are done in place.
+
+3. Remove Duplicates from Sorted Array
+    Approach:
+    1. Handle Edge Cases: If the array is empty, return 0 as there are no unique elements
+    2. Two Pointers
+        i: this pointer iterates through the array starting from the second element
+        k: this pointer marks the position where the next unique should be placed. It starts from the first element, assuming the first element is unique.
+    3. Iterate and Check for Duplicates:
+        Compare each element with the previous one. If they are different, it means we have found a unique element.
+        Place this unique element at the 'k'th position and increment k.
+    4. Return and Count:
+        After the iteration, 'k' will be the count of unique elements, and the first 'k' elements of 'nums' will be the unique elements. 
+
+    Code:
+    ```
+    def removeDuplicates(nums):
+    if not nums:
+        return 0
+
+    k = 1  # Start from the second element
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i - 1]:
+            nums[k] = nums[i]
+            k += 1
+    return k
+
+    ```
+
+    Time Complexity
+
+    O(n): Where n is the length of nums. The solution involves a single pass through the array.
+
+    Space Complexity
+
+    O(1): No additional space is used, as the operation is performed in-place.
+
+    Loop Initialization: for i in range(1, len(nums))
+        The loop starts with i = 1, not 0. This is because we compare each element with its previous element. Starting at 1 ensures there's always a "previous" element.
+        The loop continues until i reaches the length of nums, iterating through the entire array.
+
+    Condition Check: if nums[i] != nums[i - 1]
+        In each iteration, we check if the current element (nums[i]) is different from the previous element (nums[i - 1]).
+        Since the array is sorted, duplicate elements are adjacent. So, this check effectively identifies when a new unique element is encountered.
+
+    Placing Unique Elements: nums[k] = nums[i]
+        When a new unique element is found, we place it at the kth position in nums.
+        This step gradually moves unique elements to the beginning of the array, overwriting duplicates.
+        Note that if k and i are the same (which happens when there are no duplicates so far), this operation doesn't change the array but is still important for consistency.
+
+    Incrementing k: k += 1
+        After placing a unique element, we increment k.
+        This increment ensures that the next unique element found will be placed in the next position in the array, maintaining the order of unique elements.
+
+3. Remove Duplicates from Sorted Array II
+    Approach:
+    1. Handle Edge Cases: If the array has less than 3 elements, all elements can stay as they are, and we return the length of the array.
+    2. Two Pointers:
+        - i: this pointer iterates through the array starting from the second element
+        - k: this pointer marks the position where the next element (either a unique element or a second occurrence) should be placed. It starts from the second element, assuming the first two elements can always stay. 
+    3. Iterate and Check for Duplicates:
+        Compare each element with the element two positions before. If they are different, it means the current element is either unique or a permissible second occurrence. 
+    4. Return the Count:
+        - After the iteration, k will be the count of elements after allowing each unique element ot appear at most twice. 
+
+    Code: 
+    ```
+    def removeDuplicates(nums):
+    if len(nums) < 3:
+        return len(nums)
+
+    k = 2  # Start from the third element
+    for i in range(2, len(nums)):
+        if nums[i] != nums[k - 2]:
+            nums[k] = nums[i]
+            k += 1
+    return k
+    
+    ```
+
+    Time Complexity
+
+    O(n): Where n is the length of nums. The solution involves a single pass through the array.
+
+    Space Complexity
+
+    O(1): No additional space is used, as the operation is performed in-place.
