@@ -1,4 +1,4 @@
-# Go-Forth 2.0
+# ts-www
 
-Go-Forth is a static site generator written in Go!
+This is Thomas Seeley's personal website. 🗃️
 
