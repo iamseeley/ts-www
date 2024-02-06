@@ -8,6 +8,15 @@
       "title": "Your Log Title"
     }
   },
+  "doit": {
+    "body": "\n",
+    "frontMatter": {
+      "content": "You can just do things.",
+      "date": "Feb 06, 2024",
+      "draft": false,
+      "title": "Just do the thing"
+    }
+  },
   "dragons": {
     "body": "\n",
     "frontMatter": {
