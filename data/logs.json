@@ -11,8 +11,8 @@
   "doit": {
     "body": "\n",
     "frontMatter": {
-      "content": "You can just do things.",
-      "date": "Feb 06, 2024",
+      "date": "2024-02-20",
+      "description": "You can just do things.",
       "draft": false,
       "title": "Just do the thing"
     }
@@ -20,8 +20,8 @@
   "dragons": {
     "body": "\n",
     "frontMatter": {
-      "content": "I want to fight dragons every day. 🐉 I have the most fun attacking and defeating big problems.",
-      "date": "Feb 01, 2024",
+      "date": "2024-02-20",
+      "description": "I want to fight dragons every day. 🐉 I have the most fun attacking and defeating big problems.",
       "draft": false,
       "title": "Dragons"
     }
@@ -29,8 +29,8 @@
   "log1-24": {
     "body": "\n",
     "frontMatter": {
-      "content": "January is coming to a close and I'm finishing up some long-standing work for a client. We've gone up to the mountains and are spending our time working in a local coffee shop and climbing at a nearby gym. This semester's classes are starting soon and I'm excited.",
-      "date": "Jan 24, 2024",
+      "date": "2024-02-20",
+      "description": "January is coming to a close and I'm finishing up some long-standing work for a client. We've gone up to the mountains and are spending our time working in a local coffee shop and climbing at a nearby gym. This semester's classes are starting soon and I'm excited.",
       "draft": false,
       "title": "January Closing"
     }
@@ -38,8 +38,8 @@
   "log2": {
     "body": "\n",
     "frontMatter": {
-      "content": "In the next few days I'm going to add more components to wando-ui, update the build processes in go-forth 2.0, finalize the design for a client's site, and write some notes! ⚙️",
-      "date": "Jan 8, 2024",
+      "date": "2024-02-20",
+      "description": "In the next few days I'm going to add more components to wando-ui, update the build processes in go-forth 2.0, finalize the design for a client's site, and write some notes! ⚙️",
       "draft": false,
       "title": "Jan 2024 - to dos"
     }
@@ -47,8 +47,8 @@
   "newyear": {
     "body": "\n",
     "frontMatter": {
-      "content": "Focusing on making connections online and irl will be a big part of this year. I'm going to give less thought to how I engage with people online. I'll support the interesting and post like I'm writing in a diary. 🤝",
-      "date": "Jan 2, 2024",
+      "date": "2024-02-20",
+      "description": "Focusing on making connections online and irl will be a big part of this year. I'm going to give less thought to how I engage with people online. I'll support the interesting and post like I'm writing in a diary. 🤝",
       "draft": false,
       "title": "New Year"
     }

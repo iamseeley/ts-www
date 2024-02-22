@@ -92,9 +92,12 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 
 	page, err := utils.LoadPageFromDirectory(filepath.Dir(mdPath)+"/", filepath.Base(mdPath))
 	if err != nil {
+		if err == utils.ErrDraftContent {
+			log.Printf("Skipping draft content: %s", mdPath)
+			return nil // Skip this draft content without error
+		}
 		log.Printf("Error loading page: %v", err)
-
-		return err // Log the error for debugging
+		return err // Actual error, return it
 	}
 
 	// Generate the OG Image URL
@@ -113,6 +116,11 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 		tmpl = utils.Templates.Lookup("site.html")
 	}
 
+	feed, err := utils.LoadFeed(cfg.ContentPath)
+	if err != nil {
+		log.Println("Failed to load feed:", err)
+	}
+
 	newdata, err := utils.LoadData(cfg.DataPath)
 	if err != nil {
 		log.Printf("Failed to load data: %v", err)
@@ -123,9 +131,11 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 	templateData := struct {
 		Page *models.Content
 		Data map[string]interface{}
+		Feed []models.Content
 	}{
 		Page: page,
 		Data: newdata,
+		Feed: feed,
 	}
 
 	outputFile, err := os.Create(outputPath)

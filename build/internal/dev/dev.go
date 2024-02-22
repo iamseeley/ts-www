@@ -260,6 +260,13 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 		log.Printf("Failed to load data: %v", err)
 	}
 
+	feed, err := utils.LoadFeed(cfg.ContentPath)
+	if err != nil {
+		log.Println("Failed to load feed:", err)
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
 	p, err := utils.LoadPageFromDirectory(cfg.ContentPath, filePath)
 	if err != nil {
 		log.Printf("Error loading page: %v", err) // Log the error for debugging
@@ -277,9 +284,11 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	templateData := struct {
 		Page *models.Content
 		Data map[string]interface{}
+		Feed []models.Content
 	}{
 		Page: p,
 		Data: data,
+		Feed: feed,
 	}
 
 	tmplName := collection

@@ -12,12 +12,12 @@
     }
   },
   "go-forth": {
-    "body": "",
+    "body": "\n",
     "frontMatter": {
-      "date": 2023,
+      "date": "2024-02-20",
       "description": "A static site generator written in Go",
       "draft": false,
-      "featured": true,
+      "featured": false,
       "link": "https://github.com/iamseeley/go-forth2.0",
       "title": "Go-Forth",
       "why": "Why did you make this project?"
@@ -26,7 +26,7 @@
   "wando-ui": {
     "body": "",
     "frontMatter": {
-      "date": 2023,
+      "date": "2024-02-20",
       "description": "TypeScript \u0026 Tailwind CSS component collection",
       "draft": false,
       "featured": true,

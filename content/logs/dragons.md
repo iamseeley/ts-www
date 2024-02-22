@@ -1,6 +1,6 @@
 ---
 title: Dragons
-date: Feb 01, 2024
+date: 2024-02-20
 draft: false
-content: I want to fight dragons every day. 🐉 I have the most fun attacking and defeating big problems.
+description: I want to fight dragons every day. 🐉 I have the most fun attacking and defeating big problems.
 ---

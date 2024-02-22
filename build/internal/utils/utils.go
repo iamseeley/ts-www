@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 	"ts-www/build/internal/config"
@@ -19,6 +20,62 @@ import (
 	"github.com/go-yaml/yaml"
 	"github.com/russross/blackfriday/v2"
 )
+
+func LoadFeed(directory string) ([]models.Content, error) {
+	var allContent []models.Content
+
+	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() || filepath.Ext(path) != ".md" {
+			return nil // Skip directories and non-markdown files.
+		}
+
+		// Extract collection name and file name.
+		collectionName := filepath.Base(filepath.Dir(path))
+		fileName := filepath.Base(path)
+
+		// Skip if the collection is "page" or the file is "base.md".
+		if collectionName == "page" || fileName == "base.md" {
+			return nil
+		}
+
+		// Correctly construct the path to include the collection
+		collectionDir := filepath.Dir(path)
+
+		// Use LoadPageFromDirectory to load the content, passing the correct directory and file name.
+		content, err := LoadPageFromDirectory(collectionDir+"/", fileName)
+		if err != nil {
+			log.Printf("Error loading content from %s: %v", path, err)
+			return nil // Continue processing other files even if one fails.
+		}
+
+		// Append loaded content to the slice.
+		allContent = append(allContent, *content)
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	// Sort the slice by date.
+	sort.Slice(allContent, func(i, j int) bool {
+		dateI, errI := time.Parse("2006-01-02", allContent[i].Date)
+		dateJ, errJ := time.Parse("2006-01-02", allContent[j].Date)
+		if errI != nil || errJ != nil {
+			log.Printf("Error parsing date: %v, %v", errI, errJ)
+			return false
+		}
+		return dateI.After(dateJ)
+	})
+
+	return allContent, nil
+}
+
+var ErrDraftContent = errors.New("content is marked as draft")
 
 func LoadPageFromDirectory(directory, title string) (*models.Content, error) {
 	filename := directory + title
@@ -40,6 +97,20 @@ func LoadPageFromDirectory(directory, title string) (*models.Content, error) {
 	var contentItem models.Content
 	contentItem.Title, _ = frontMatter["title"].(string)
 	contentItem.Date, _ = frontMatter["date"].(string)
+	if description, ok := frontMatter["description"].(string); ok {
+		contentItem.Description = description
+	} else {
+		contentItem.Description = ""
+	}
+	// Check if the content is marked as a draft
+	if draft, ok := frontMatter["draft"].(bool); ok && draft {
+		return nil, ErrDraftContent
+	}
+	if featured, ok := frontMatter["featured"].(bool); ok {
+		contentItem.Featured = featured
+	} else {
+		contentItem.Draft = true
+	}
 	contentItem.Body = body
 	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
 	contentItem.Collection = filepath.Base(filepath.Dir(filename))

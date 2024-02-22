@@ -5,79 +5,31 @@
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "Home"}}
-            <section>
-            </section>
-            <section>
-                <h3>Featured Posts</h3>
-                <ul class="home-list">
-                {{ range .Data.posts }}
-                {{ if .frontMatter.featured }}
+            <section class="feed">
+                {{ range .Feed }}
                     
-                    <li class="featured-posts">
-                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
-                        <time><em>{{ .frontMatter.date }}</em></time>
-                    </li>
-                {{end}}
-                {{end}}
-                </ul>
-            </section>
-            <section>
-                <h3>Featured Projects</h3>
-                <ul class="home-list">
-                {{ range .Data.projects }}
-                {{ if .frontMatter.featured }}
+                    {{ if eq .Collection "posts" }}
+                        <div>
+                            <h3><a href="">{{ .Title }}</a> 📜</h3></a>
+                        </div>
+                    {{ end  }}
+                    {{ if eq .Collection "projects" }}
+                    <div>
+                        <h3><a href="">{{ .Title }}</a> 🛠️</h3>
+                        <p>{{ .Description }}</p>
+                    </div>
+                    {{ end  }}
+                    {{ if eq .Collection "logs" }}
+                    <div>
+                        <h3>{{ .Date }} ⛵</h3>
+                        <p>{{ .Description }}</p>
+                    </div>
+                    {{ end  }}
                    
-                    <li class="featured-posts">
-                        <strong><a target="_blank" rel="noopener noreferrer" href="{{ .frontMatter.link }}">{{ .frontMatter.title }}</a></strong>:
-                        {{ .frontMatter.description }}
-                    </li>
-                    
-                {{end}}
-                {{end}}
-                </ul>
+                {{ end }}
+
             </section>
-            <section>
-                <h3>Recent Logs</h3>
-                <ul class="home-list">
-                    {{ range .Data.logs }}
-                    {{ if eq .frontMatter.draft false }}
-                        <li class="featured-posts">
-                            <article class="log">
-                            <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
-                            <time><em>{{ .frontMatter.date }}</em></time>
-                            <p>{{ .frontMatter.content }}</p>
-                            </article>
-                        </li>
-                    {{end}}
-                    {{end}}
-                </ul>
-            </section>
-            <section>
-                <h3>Collections</h3>
-                <ul class="home-list">
-                    <li class="featured-posts">
-                        <strong><a href="/collections#books">Books</a></strong>
-                    </li>
-                    <li class="featured-posts">
-                        <strong><a href="/collections#blogs">Blogs</a></strong>
-                    </li>
-                    
-                <!-- {{ range .Data.collections }}
-                {{ with .frontMatter }}
-                    <li>
-                        
-                    
-                    </li>
-                {{end}}
-                {{end}} -->
-                </ul>
-            </section>
-            <section>
-            <aside>
-                <p><strong>About this site</strong></p>
-                <p>This site is made from a <a href="https://github.com/iamseeley/go-forth">static site generator</a> I wrote in Go. I write my page content in Markdown files and the files get converted to html!</p> <p> Over the past few years I've built multiple portfolio websites, mostly in React and with a framework like Next.js. I decided to go frameworkless for my personal site and build out the features I needed myself.</p> <p>So, this site is a work in progress and always will be. I'm having fun with it.</p>
-            </aside>
-        </section>
+            
         {{ end }}
 
         {{ if eq .Page.Title "Collections"}}

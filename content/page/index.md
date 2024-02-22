@@ -3,14 +3,11 @@ title: Home
 description: Thomas Seeley's personal website.
 ---
 
-## Hi, I'm [Thomas](/about) and this is my corner of the internet.
+## Hi, I’m Thomas 
 
-<div class="socials">
-<a target="_blank" rel="noreferrer noopener" href="mailto:hello@tseeley.com">email</a>
-<a target="_blank" rel="noreferrer noopener" href="https://github.com/iamseeley">github</a>
-<a target="_blank" rel="noreferrer noopener" href="https://twitter.com/iamseeley">twitter/x</a>
-<a target="_blank" rel="noreferrer noopener" href="">linkedin</a>
-</div>
+This feed consists of 📜 posts I’ve written, 🛠️ projects I’ve built, random ⛵ logs,  📷 photos, and 🔖 bookmarks of interesting content.
+
+
 
 
 

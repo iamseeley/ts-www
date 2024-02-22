@@ -1,8 +1,19 @@
 {
+  "about-this-site": {
+    "body": "\n\n\u003csection\u003e\n            \u003caside\u003e\n                \u003cp\u003e\u003cstrong\u003eAbout this site\u003c/strong\u003e\u003c/p\u003e\n                \u003cp\u003eThis site is made from a \u003ca href=\"https://github.com/iamseeley/go-forth\"\u003estatic site generator\u003c/a\u003e I wrote in Go. I write my page content in Markdown files and the files get converted to html!\u003c/p\u003e \u003cp\u003e Over the past few years I've built multiple portfolio websites, mostly in React and with a framework like Next.js. I decided to go frameworkless for my personal site and build out the features I needed myself.\u003c/p\u003e \u003cp\u003eSo, this site is a work in progress and always will be. I'm having fun with it.\u003c/p\u003e\n            \u003c/aside\u003e\n\u003c/section\u003e\n",
+    "frontMatter": {
+      "date": "2023-12-02",
+      "description": "A little note about this website",
+      "draft": false,
+      "featured": false,
+      "title": "About This Site",
+      "url": "/posts/about-this-site"
+    }
+  },
   "base": {
     "body": "",
     "frontMatter": {
-      "date": "Nov 11, 2023",
+      "date": "YYYY-MM-DD",
       "description": "Post 1 this is.",
       "draft": true,
       "featured": false,
@@ -13,7 +24,7 @@
   "intro": {
     "body": "\n\nHi, my name is Thomas and I like making things. I'll share those things here.\n\nSound good? Okay.\n\nBest,\n\nThomas",
     "frontMatter": {
-      "date": "Nov 11, 2023",
+      "date": "2023-10-05",
       "description": "Post 1 this is.",
       "draft": false,
       "featured": true,
@@ -24,7 +35,7 @@
   "long-forms": {
     "body": "\n\nI've been working on a client project that has a very long web form and I can't figure out a great way to style it. I'm writing this to compile some information on better web form design. So, here's my web form checklist for accessible, visually appealing web forms.\n\n### Web Form Checklist\n\n#### Planning \u0026 Design\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Define the purpose of your form\n\u003cinput type=\"checkbox\" /\u003e Identify the essential fields\n\u003cinput type=\"checkbox\" /\u003e Organize the fields logically \n\u003c/div\u003e\n\n#### UX\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Chunk information \n\n*if your form is too long it might be helpful to cut it into sections or steps, however nesting labels and inputs too deeply can worsen the UX*\n\u003cinput type=\"checkbox\" /\u003e Simplify labels\n\u003cinput type=\"checkbox\" /\u003e Implement conditional fields based on previous inputs\n\u003cinput type=\"checkbox\" /\u003e Choose optimal field types\n\u003cinput type=\"checkbox\" /\u003e Enable autofill\n\u003cinput type=\"checkbox\" /\u003e Provide user feedback and proper form validation\n\n\u003c/div\u003e\n\n#### Accessibility\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Ensure keyboard navigability\n\u003cinput type=\"checkbox\" /\u003e Use semantic HTML\n\u003cinput type=\"checkbox\" /\u003e Make sure lables and instructions are clear\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003c/div\u003e\n\n#### Maintenance\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form?\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003c/div\u003e",
     "frontMatter": {
-      "date": "Feb 01, 2024",
+      "date": "2024-02-01",
       "description": "How to design an accessible, visually appealing web form.",
       "draft": true,
       "featured": false,

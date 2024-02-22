@@ -1,9 +1,9 @@
 {
-    "siteTitle": "Static Site",
-    "siteDescription": "This is a description of my static site.",
+    "siteTitle": "Thomas Seeley",
+    "siteDescription": "Thomas Seeley's Personal Website",
     "templatePath": "./templates/",
     "contentPath": "./content/",
     "outputPath": "./src/",
-    "themeName": "fun",
+    "themeName": "feed",
     "dataPath": "./data/"
 }

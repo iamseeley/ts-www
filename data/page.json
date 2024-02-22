@@ -14,15 +14,16 @@
       "title": "Your Page Title"
     }
   },
-  "collections": {
-    "body": "\n\n## Collections\n\n",
+  "bookmarks": {
+    "body": "\n\n\n## Bookmarks\n",
     "frontMatter": {
-      "description": "A collection of interesting links, books, blogs, and other content.",
-      "title": "Collections"
+      "description": "A brief description of the page",
+      "draft": false,
+      "title": "Bookmarks"
     }
   },
   "index": {
-    "body": "\n\n## Hi, I'm [Thomas](/about) and this is my corner of the internet.\n\n\u003cdiv class=\"socials\"\u003e\n\u003ca target=\"_blank\" rel=\"noreferrer noopener\" href=\"mailto:hello@tseeley.com\"\u003eemail\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noreferrer noopener\" href=\"https://github.com/iamseeley\"\u003egithub\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noreferrer noopener\" href=\"https://twitter.com/iamseeley\"\u003etwitter/x\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noreferrer noopener\" href=\"\"\u003elinkedin\u003c/a\u003e\n\u003c/div\u003e\n\n\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/\u003e\u003crect width=\"4\" height=\"12\" x=\"2\" y=\"9\"/\u003e\u003ccircle cx=\"4\" cy=\"4\" r=\"2\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4\"/\u003e\u003cpath d=\"M9 18c-4.51 2-5-2-7-2\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003ccircle cx=\"12\" cy=\"12\" r=\"4\"/\u003e\u003cpath d=\"M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8\"/\u003e\u003c/svg\u003e --\u003e",
+    "body": "\n\n## Hi, I’m Thomas \n\nThis feed consists of 📜 posts I’ve written, 🛠️ projects I’ve built, random ⛵ logs,  📷 photos, and 🔖 bookmarks of interesting content.\n\n\n\n\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"/\u003e\u003crect width=\"4\" height=\"12\" x=\"2\" y=\"9\"/\u003e\u003ccircle cx=\"4\" cy=\"4\" r=\"2\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003cpath d=\"M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4\"/\u003e\u003cpath d=\"M9 18c-4.51 2-5-2-7-2\"/\u003e\u003c/svg\u003e --\u003e\n\n\u003c!-- \u003csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#eef1f1\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"icon\"\u003e\u003ccircle cx=\"12\" cy=\"12\" r=\"4\"/\u003e\u003cpath d=\"M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8\"/\u003e\u003c/svg\u003e --\u003e",
     "frontMatter": {
       "description": "Thomas Seeley's personal website.",
       "title": "Home"
@@ -35,22 +36,15 @@
       "title": "Captain's Log"
     }
   },
-  "notes": {
-    "body": "\n\n## Notes",
-    "frontMatter": {
-      "description": "Thomas Seeley's notes on various topics.",
-      "title": "Notes"
-    }
-  },
   "photos": {
-    "body": "\n\n## Photos",
+    "body": "\n\n## Photos\n---\n",
     "frontMatter": {
       "description": "A gallery of photos Thomas has taken.",
       "title": "Photos"
     }
   },
   "posts": {
-    "body": "\n\n## Posts",
+    "body": "\n\n## Posts\n\n\n",
     "frontMatter": {
       "description": "Focused writings.",
       "title": "Posts"

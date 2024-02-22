@@ -1,7 +1,7 @@
 ---
 title: Introductions
 description: Post 1 this is.
-date: Nov 11, 2023
+date: YYYY-MM-DD
 url: /posts/intro
 draft: true
 featured: false

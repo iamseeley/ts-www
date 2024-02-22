@@ -1,7 +1,7 @@
 ---
 title: Better Web Forms
 description: How to design an accessible, visually appealing web form.
-date: Feb 01, 2024
+date: 2024-02-01
 url: /posts/long-forms
 draft: true
 featured: false

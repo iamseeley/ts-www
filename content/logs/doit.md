@@ -1,6 +1,6 @@
 ---
 title: Just do the thing
-date: Feb 06, 2024
+date: 2024-02-20
 draft: false
-content: You can just do things.
+description: You can just do things.
 ---
