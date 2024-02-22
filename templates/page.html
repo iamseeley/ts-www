@@ -1,7 +1,7 @@
 {{ define "page" }}
 {{template "_top" .}}
 
-        <section class="page-body">
+        <section class="">
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "Home"}}

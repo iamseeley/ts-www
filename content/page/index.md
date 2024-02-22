@@ -7,7 +7,7 @@ description: Thomas Seeley's personal website.
 
 This feed consists of 📜 posts I’ve written, 🛠️ projects I’ve built, random ⛵ logs,  📷 photos, and 🔖 bookmarks of interesting content.
 
-
+<p class="topics"></p>
 
 
 

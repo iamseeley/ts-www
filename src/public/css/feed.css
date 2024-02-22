@@ -38,7 +38,7 @@ body {
 main {
     padding: 2em;
     /* max-width: 624px; */
-    margin-bottom: 1.875em;
+    margin-bottom: 2em;
     color: var(--text-color-1);
 }
 
@@ -83,9 +83,7 @@ footer p a {
     color: var(--text-color-1);
 }
 
-section {
-    margin-bottom: 4em;
-}
+
 
 .feed {
     display: flex;
@@ -93,6 +91,9 @@ section {
     gap: 16px;
 }
 
+.topics {
+    margin-bottom: 2em;
+}
 
 a {
     text-decoration: underline;
