@@ -42,6 +42,9 @@ main {
     color: var(--text-color-1);
 }
 
+section {
+    margin-bottom: 3em;
+}
 
 header {
     display: flex;
