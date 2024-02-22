@@ -69,6 +69,10 @@ footer {
     padding-right: 2em;
 }
 
+footer p a {
+    text-decoration: none;
+}
+
 .og-image {
     margin: auto;
     text-align: center;
@@ -158,15 +162,35 @@ h2 {
 
 h3 {
     font-size: 1.5em;
-    margin-bottom: .4em;
+    
 }
 
 h2, h3, h4, h5 {
     line-height: 1.2;
+    margin-bottom: .4em;
+}
+
+h4 {
+   font-weight: normal;
 }
 
 
 p, li {
     font-size: 1.05rem;
     line-height: 1.6em;
+}
+
+
+.list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list li {
+    list-style-type: none;
+    margin-bottom: .3em;
+}
+
+.list p {
+    margin-top: 0;
 }

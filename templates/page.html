@@ -19,6 +19,11 @@
                         <p>{{ .Description }}</p>
                     </div>
                     {{ end  }}
+                    {{ if eq .Collection "bookmarks" }}
+                    <div>
+                        <h3><a href="">{{ .Title }}</a> 🔖</h3>
+                    </div>
+                    {{ end  }}
                     {{ if eq .Collection "logs" }}
                     <div>
                         <h3>{{ .Date }} ⛵</h3>
@@ -31,52 +36,48 @@
             </section>
             
         {{ end }}
-
-        {{ if eq .Page.Title "Collections"}}
-        {{ range .Data.collections }}
-        {{ with .frontMatter }}
-        {{ if eq .draft false}}
-                <div class="card">
-                    <div class="collect-header">
-                    <div>
-                    <a href="{{ .link }}"><strong>{{ .title }}</strong></a>
-                    {{ .author }}
-                    </div>
-                    <div>
-                    <span>{{ .type }}</span>
-                    </div>
-                    </div>
-                    <p class="collect-p">{{ .summary }}</p>
-                </div>
-        {{end}}
+        <section class="list">
+        {{ if eq .Page.Title "Bookmarks"}}
+            <ul>
+                {{ range .Data.bookmarks }}
+                
+                {{ if eq .frontMatter.draft false}}
+                <li>
+                    <h4><a href="{{ .frontMatter.link }}"><strong>{{ .frontMatter.title }}</strong></a> by {{ .frontMatter.author }}</h4>
+                    <p class="">{{ .frontMatter.description }}</p>
+                </li>
+                {{ end }}
+                
+            </ul>
         {{ end }}
-        {{ end }}
+    
         {{ else if eq .Page.Title "Posts" }}
-            <ul class="home-list">
+            <ul>
                 {{ range .Data.posts }}
                 {{ if eq .frontMatter.draft false}}
-                    <li class="featured-posts">
+                    <li>
                         <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                         <time><em>{{ .frontMatter.date }}</em></time>
                     </li>
                 {{end}}
                 {{end}}
             </ul>
-            {{ else if eq .Page.Title "Captain's Log" }}
-            <ul class="home-list">
+        {{ else if eq .Page.Title "Captain's Log" }}
+            <ul>
                 {{ range .Data.logs }}
                     {{ if eq .frontMatter.draft false }}
-                    <li class="featured-posts">
-                        <article class="log">
+                    <li>
+                        <article>
                         <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
-                        <time><em>{{ .frontMatter.date }}</em></time>
-                        <p>{{ .frontMatter.content }}</p>
+                        <h4><time><strong>{{ .frontMatter.date }}</strong></time></h4>
+                        <p>{{ .frontMatter.description }}</p>
                         </article>
                     </li>
                     {{end}}
                 {{end}}
             </ul>
         {{ end }}
+    </section>
         
         {{template "_bottom" .}}
 {{ end }}
