@@ -5,34 +5,39 @@
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "Home"}}
-            <section class="feed">
+            <section class="list">
+                <ul>
                 {{ range .Feed }}
                     
                     {{ if eq .Collection "posts" }}
-                        <div>
-                            <h3><a href="">{{ .Title }}</a> 📜</h3></a>
-                        </div>
+                       
+                            <li>
+                                <h4><a href=""><strong>{{ .Title }}</strong></a> 📜</h4></a>
+                            </li>
+                        
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
-                    <div>
-                        <h3><a href="">{{ .Title }}</a> 🛠️</h3>
-                        <p>{{ .Description }}</p>
-                    </div>
+                   
+                        <li>
+                            <h4><a href=""><strong>{{ .Title }}</strong></a> 🛠️</h4>
+                            <p>{{ .Description }}</p>
+                        </li>
+                   
                     {{ end  }}
                     {{ if eq .Collection "bookmarks" }}
-                    <div>
-                        <h3><a href="">{{ .Title }}</a> 🔖</h3>
-                    </div>
+                    <li>
+                        <h4><a href=""><strong>{{ .Title }}</strong></a> 🔖</h4>
+                    </li>
                     {{ end  }}
                     {{ if eq .Collection "logs" }}
-                    <div>
-                        <h3>{{ .Date }} ⛵</h3>
+                    <li>
+                        <h4><strong>{{ .Date }}</strong> ⛵</h3>
                         <p>{{ .Description }}</p>
-                    </div>
+                    </li>
                     {{ end  }}
                    
                 {{ end }}
-
+            </ul>
             </section>
             
         {{ end }}
@@ -55,9 +60,11 @@
             <ul>
                 {{ range .Data.posts }}
                 {{ if eq .frontMatter.draft false}}
-                    <li>
-                        <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
-                        <time><em>{{ .frontMatter.date }}</em></time>
+                    <li> 
+                        <h4>
+                            <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                            <time><em>{{ .frontMatter.date }}</em></time>
+                        </h4>
                     </li>
                 {{end}}
                 {{end}}

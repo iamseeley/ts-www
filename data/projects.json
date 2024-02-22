@@ -27,7 +27,7 @@
     "body": "",
     "frontMatter": {
       "date": "2024-02-20",
-      "description": "TypeScript \u0026 Tailwind CSS component collection",
+      "description": "TypeScript + Tailwind CSS component collection and CLI application",
       "draft": false,
       "featured": true,
       "link": "https://github.com/iamseeley/wando-ui",
