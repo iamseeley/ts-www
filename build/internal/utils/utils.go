@@ -112,6 +112,7 @@ func LoadPageFromDirectory(directory, title string) (*models.Content, error) {
 		contentItem.Draft = true
 	}
 	contentItem.Body = body
+	contentItem.URL, _ = frontMatter["url"].(string)
 	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
 	contentItem.Collection = filepath.Base(filepath.Dir(filename))
 

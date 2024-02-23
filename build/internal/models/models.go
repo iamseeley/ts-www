@@ -6,6 +6,7 @@ type Content struct {
 	Description string `json:"description"`
 	Body        []byte `json:"body"`
 	Draft       bool   `json:"draft"`
+	URL         string `json:"URL"`
 	Featured    bool   `json:"featured,omitempty"`
 	Theme       string `json:"theme"` // Assuming theme is consistent across content
 	Collection  string `json:"collection"`

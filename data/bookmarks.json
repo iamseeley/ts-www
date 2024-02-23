@@ -8,7 +8,7 @@
       "draft": false,
       "link": "https://waitbutwhy.com/2016/10/100-blocks-day.html",
       "title": "100 Blocks a Day",
-      "type": "blog"
+      "url": "/bookmarks/100blocks"
     }
   },
   "base": {
@@ -17,7 +17,8 @@
       "date": "2024-02-20",
       "description": "Description",
       "draft": true,
-      "title": "Title"
+      "title": "Title",
+      "url": "url"
     }
   },
   "sapiens": {
@@ -29,7 +30,7 @@
       "draft": false,
       "link": "https://www.ynharari.com/book/sapiens-2/",
       "title": "Sapiens",
-      "type": "book"
+      "url": "/bookmarks/sapiens"
     }
   }
 }

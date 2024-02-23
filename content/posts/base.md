@@ -2,7 +2,7 @@
 title: Introductions
 description: Post 1 this is.
 date: YYYY-MM-DD
-url: /posts/intro
+url: url
 draft: true
 featured: false
 ---

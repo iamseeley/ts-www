@@ -12,14 +12,14 @@
                     {{ if eq .Collection "posts" }}
                        
                             <li>
-                                <h4><a href=""><strong>{{ .Title }}</strong></a> 📜</h4></a>
+                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 📜</h4></a>
                             </li>
                         
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a href=""><strong>{{ .Title }}</strong></a> 🛠️</h4>
+                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 🛠️</h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -27,14 +27,16 @@
                     {{ if eq .Collection "photos" }}
                    
                         <li>
-                            {{ .Body | markDown }}
-                            <p>{{ .Description }}</p>
+                            <figure>
+                                <img src="{{ .URL }}" />
+                                <p>{{ .Description }}</p>
+                            </figure>
                         </li>
                    
                     {{ end  }}
                     {{ if eq .Collection "bookmarks" }}
                     <li>
-                        <h4><a href=""><strong>{{ .Title }}</strong></a> 🔖</h4>
+                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 🔖</h4>
                     </li>
                     {{ end  }}
                     {{ if eq .Collection "logs" }}
@@ -53,17 +55,15 @@
         {{ if eq .Page.Title "Bookmarks"}}
             <ul>
                 {{ range .Data.bookmarks }}
-                
                 {{ if eq .frontMatter.draft false}}
-                <li>
-                    <h4><a href="{{ .frontMatter.link }}"><strong>{{ .frontMatter.title }}</strong></a> by {{ .frontMatter.author }}</h4>
-                    <p class="">{{ .frontMatter.description }}</p>
-                </li>
+                    <li>
+                        <h4><a href="{{ .frontMatter.url }}"><strong>{{ .frontMatter.title }}</strong></a> by {{ .frontMatter.author }}</h4>
+                        <p class="">{{ .frontMatter.description }}</p>
+                    </li>
                 {{ end }}
-                
+                {{ end }}
             </ul>
-        {{ end }}
-    
+     
         {{ else if eq .Page.Title "Posts" }}
             <ul>
                 {{ range .Data.posts }}
@@ -77,15 +77,17 @@
                 {{end}}
                 {{end}}
             </ul>
+       
             {{ else if eq .Page.Title "Projects" }}
             <ul>
                 {{ range .Data.projects }}
                 {{ if eq .frontMatter.draft false}}
                     <li> 
                         <h4>
-                            <strong><a href="{{ .frontMatter.link }}">{{ .frontMatter.title }}</a></strong>
-                            <p>{{ .frontMatter.description }}</p>
+                            <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                           
                         </h4>
+                        <p>{{ .frontMatter.description }}</p>
                     </li>
                 {{end}}
                 {{end}}
@@ -95,11 +97,11 @@
                 {{ range .Data.logs }}
                     {{ if eq .frontMatter.draft false }}
                     <li>
-                        <article>
+                        
                         <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
                         <h4><time><strong>{{ .frontMatter.date }}</strong></time></h4>
                         <p>{{ .frontMatter.description }}</p>
-                        </article>
+                        
                     </li>
                     {{end}}
                 {{end}}

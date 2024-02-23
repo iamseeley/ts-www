@@ -4,9 +4,8 @@
 
 	<section>
 		<h2>{{.Page.Title}}</h2>
-		<article>
-		{{ .Page.Body | markDown }}
-		</article>
+		<img src="{{ .Page.URL }}" />
+		<p>{{ .Page.Description }}</p>
 	</section>
 
 {{template "_bottom" .}}

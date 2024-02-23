@@ -2,10 +2,11 @@
   "base": {
     "body": "\n",
     "frontMatter": {
-      "content": null,
       "date": "YYYY-MM-DD",
+      "description": null,
       "draft": true,
-      "title": "Your Log Title"
+      "title": "Your Log Title",
+      "url": "url"
     }
   },
   "doit": {
@@ -14,7 +15,8 @@
       "date": "2024-02-20",
       "description": "You can just do things.",
       "draft": false,
-      "title": "Just do the thing"
+      "title": "Just do the thing",
+      "url": "/logs/doit"
     }
   },
   "dragons": {
@@ -23,7 +25,8 @@
       "date": "2024-02-12",
       "description": "I want to fight dragons every day. 🐉 I have the most fun attacking and defeating big problems.",
       "draft": false,
-      "title": "Dragons"
+      "title": "Dragons",
+      "url": "/logs/dragons"
     }
   },
   "log1-24": {
@@ -32,7 +35,8 @@
       "date": "2024-01-26",
       "description": "January is coming to a close and I'm finishing up some long-standing work for a client. We've gone up to the mountains and are spending our time working in a local coffee shop and climbing at a nearby gym. This semester's classes are starting soon and I'm excited.",
       "draft": false,
-      "title": "January Closing"
+      "title": "January Closing",
+      "url": "/logs/log1-24"
     }
   },
   "log2": {
@@ -41,7 +45,8 @@
       "date": "2024-01-07",
       "description": "In the next few days I'm going to add more components to wando-ui, update the build processes in go-forth 2.0, finalize the design for a client's site, and write some notes! ⚙️",
       "draft": false,
-      "title": "Jan 2024 - to dos"
+      "title": "Jan 2024 - to dos",
+      "url": "/logs/log2"
     }
   },
   "newyear": {
@@ -50,7 +55,8 @@
       "date": "2024-01-01",
       "description": "Focusing on making connections online and irl will be a big part of this year. I'm going to give less thought to how I engage with people online. I'll support the interesting and post like I'm writing in a diary. 🤝",
       "draft": false,
-      "title": "New Year"
+      "title": "New Year",
+      "url": "/logs/newyear"
     }
   }
 }
