@@ -54,6 +54,11 @@ header {
     
 }
 
+img {
+    width: 200px;
+    height: 400px;
+}
+
 .socials {
     margin-top: 1em;
     display: flex;
