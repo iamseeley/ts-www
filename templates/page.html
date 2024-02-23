@@ -24,6 +24,14 @@
                         </li>
                    
                     {{ end  }}
+                    {{ if eq .Collection "photos" }}
+                   
+                        <li>
+                            {{ .Body | markDown }}
+                            <p>{{ .Description }}</p>
+                        </li>
+                   
+                    {{ end  }}
                     {{ if eq .Collection "bookmarks" }}
                     <li>
                         <h4><a href=""><strong>{{ .Title }}</strong></a> 🔖</h4>
@@ -63,7 +71,20 @@
                     <li> 
                         <h4>
                             <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
-                            <time><em>{{ .frontMatter.date }}</em></time>
+                            <!-- <time><em>{{ .frontMatter.date }}</em></time> -->
+                        </h4>
+                    </li>
+                {{end}}
+                {{end}}
+            </ul>
+            {{ else if eq .Page.Title "Projects" }}
+            <ul>
+                {{ range .Data.projects }}
+                {{ if eq .frontMatter.draft false}}
+                    <li> 
+                        <h4>
+                            <strong><a href="{{ .frontMatter.link }}">{{ .frontMatter.title }}</a></strong>
+                            <p>{{ .frontMatter.description }}</p>
                         </h4>
                     </li>
                 {{end}}

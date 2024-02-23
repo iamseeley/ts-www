@@ -1,0 +1,20 @@
+{
+  "base": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2024-02-01",
+      "description": "Description",
+      "draft": true,
+      "title": "Title"
+    }
+  },
+  "starvan": {
+    "body": "\n\n![starvan](/public/assets/images/starvan.jpg)",
+    "frontMatter": {
+      "date": "2024-02-01",
+      "description": "The vanbulance beneath the stars.",
+      "draft": false,
+      "title": "Starvan"
+    }
+  }
+}

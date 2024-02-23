@@ -1,0 +1,13 @@
+
+{{ define "photos" }}
+{{template "_top" .}}
+
+	<section>
+		<h2>{{.Page.Title}}</h2>
+		<article>
+		{{ .Page.Body | markDown }}
+		</article>
+	</section>
+
+{{template "_bottom" .}}
+{{ end }}
