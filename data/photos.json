@@ -9,7 +9,7 @@
     }
   },
   "starvan": {
-    "body": "\n\n![starvan](/public/assets/images/starvan.jpg)",
+    "body": "\n\n\u003cdiv\u003e\n![starvan](/public/images/starvan.jpg)\n\u003c/div\u003e",
     "frontMatter": {
       "date": "2024-02-01",
       "description": "The vanbulance beneath the stars.",
