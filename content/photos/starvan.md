@@ -5,4 +5,4 @@ date: "2024-02-01"
 draft: false
 ---
 
-![starvan](/public/assets/images/starvan.jpg)
+![starvan](/public/images/starvan.jpg)
