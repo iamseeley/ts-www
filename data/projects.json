@@ -17,10 +17,9 @@
       "date": "2024-02-28",
       "description": "Create mini movies from text using fal.ai and ffmpeg-wasm",
       "draft": false,
-      "featured": true,
-      "link": "https://github.com/iamseeley/falbulous-minimovie",
+      "featured": false,
       "title": "Falbulous MiniMovie",
-      "why": "Why did you make this project?"
+      "url": "https://github.com/iamseeley/falbulous-minimovie"
     }
   },
   "go-forth": {
