@@ -56,8 +56,14 @@ header {
 
 img {
     display: inline-block;
-   max-width: 75%;
+    max-width: 100%;
     margin-top: .9em;
+}
+
+@media (min-width: 625px) {
+    img {
+        max-width: 75%; /* Images will take up 75% width of their container */
+    }
 }
 
 figure {
@@ -182,7 +188,7 @@ h3 {
 }
 
 h2, h3, h4, h5 {
-    /* line-height: 1.2; */
+    line-height: 1.2em;
     margin-bottom: .4em;
 }
 

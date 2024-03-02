@@ -9,6 +9,16 @@
       "url": "url"
     }
   },
+  "buildit": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2024-02-29",
+      "description": "Big project(s) in the works. Will give more details soon. It might involve emojis...",
+      "draft": false,
+      "title": "Build It",
+      "url": "/logs/buildit"
+    }
+  },
   "doit": {
     "body": "\n",
     "frontMatter": {
