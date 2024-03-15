@@ -44,7 +44,7 @@
     }
   },
   "posts": {
-    "body": "\n\n## Posts 📜\n\n\n",
+    "body": "\n\n## Posts\n\n\n",
     "frontMatter": {
       "description": "Focused writings.",
       "title": "Posts"
