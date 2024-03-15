@@ -12,14 +12,14 @@
                     {{ if eq .Collection "posts" }}
                        
                             <li>
-                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 📜</h4></a>
+                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4></a>
                             </li>
                         
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 🛠️</h4>
+                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -36,12 +36,12 @@
                     {{ end  }}
                     {{ if eq .Collection "bookmarks" }}
                     <li>
-                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a> 🔖</h4>
+                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
                     </li>
                     {{ end  }}
                     {{ if eq .Collection "logs" }}
                     <li>
-                        <h4><strong>{{ .Date }}</strong> ⛵</h3>
+                        <h4><strong>{{ .Date }}</strong></h3>
                         <p>{{ .Description }}</p>
                     </li>
                     {{ end  }}
@@ -73,6 +73,20 @@
                             <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                             <!-- <time><em>{{ .frontMatter.date }}</em></time> -->
                         </h4>
+                    </li>
+                {{end}}
+                {{end}}
+            </ul>
+
+            {{ else if eq .Page.Title "Photos" }}
+            <ul>
+                {{ range .Data.photos }}
+                {{ if eq .frontMatter.draft false}}
+                    <li>
+                        <figure>
+                            <img src="{{ .frontMatter.url }}" />
+                            <p>{{ .frontMatter.description }}</p>
+                        </figure>
                     </li>
                 {{end}}
                 {{end}}

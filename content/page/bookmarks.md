@@ -5,6 +5,6 @@ draft: false
 ---
 
 
-## Bookmarks 🔖
+## Bookmarks
 
 A collection of content I find interesting.
