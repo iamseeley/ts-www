@@ -19,7 +19,7 @@
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; project</span></h4>
+                            <h4><a target="_blank" rel="noreferrer noopener" href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; project</span></h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -98,7 +98,7 @@
                 {{ if eq .frontMatter.draft false}}
                     <li> 
                         <h4>
-                            <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                            <strong><a target="_blank" rel="noreferrer noopener" href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                            
                         </h4>
                         <p>{{ .frontMatter.description }}</p>
