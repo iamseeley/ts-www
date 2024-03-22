@@ -11,6 +11,17 @@
       "why": "Why did you make this project?"
     }
   },
+  "emojihack": {
+    "body": "\n",
+    "frontMatter": {
+      "date": "2024-03-15",
+      "description": "Build something for every single emoji",
+      "draft": false,
+      "featured": false,
+      "link": "https://github.com/iamseeley/emojihack",
+      "title": "Emoji Hack"
+    }
+  },
   "falbulous-minimovie": {
     "body": "\n",
     "frontMatter": {
