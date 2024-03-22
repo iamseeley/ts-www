@@ -31,16 +31,5 @@
       "title": "Introductions",
       "url": "/posts/intro"
     }
-  },
-  "long-forms": {
-    "body": "\n\nI've been working on a client project that has a very long web form and I can't figure out a great way to style it. I'm writing this to compile some information on better web form design. So, here's my web form checklist for accessible, visually appealing web forms.\n\n### Web Form Checklist\n\n#### Planning \u0026 Design\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Define the purpose of your form\n\u003cinput type=\"checkbox\" /\u003e Identify the essential fields\n\u003cinput type=\"checkbox\" /\u003e Organize the fields logically \n\u003c/div\u003e\n\n#### UX\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Chunk information \n\n*if your form is too long it might be helpful to cut it into sections or steps, however nesting labels and inputs too deeply can worsen the UX*\n\u003cinput type=\"checkbox\" /\u003e Simplify labels\n\u003cinput type=\"checkbox\" /\u003e Implement conditional fields based on previous inputs\n\u003cinput type=\"checkbox\" /\u003e Choose optimal field types\n\u003cinput type=\"checkbox\" /\u003e Enable autofill\n\u003cinput type=\"checkbox\" /\u003e Provide user feedback and proper form validation\n\n\u003c/div\u003e\n\n#### Accessibility\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e Ensure keyboard navigability\n\u003cinput type=\"checkbox\" /\u003e Use semantic HTML\n\u003cinput type=\"checkbox\" /\u003e Make sure lables and instructions are clear\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003c/div\u003e\n\n#### Maintenance\n\n\u003cdiv class=\"flex\"\u003e\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form?\n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003cinput type=\"checkbox\" /\u003e What is the purpose of your form? \n\u003c/div\u003e",
-    "frontMatter": {
-      "date": "2024-02-01",
-      "description": "How to design an accessible, visually appealing web form.",
-      "draft": true,
-      "featured": false,
-      "title": "Better Web Forms",
-      "url": "/posts/long-forms"
-    }
   }
 }

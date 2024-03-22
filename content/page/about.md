@@ -13,4 +13,4 @@ I am currently looking for full-time roles as a front-end or full-stack develope
 
 ### Now
 
-I recently started a part-time Master of Science in Computer Science program to further improve my programming skills and go deeper on some computer science topics I'm interested in. 
+I recently started a part-time MS CS program to further improve my programming skills and go deeper on some computer science topics I'm interested in. 

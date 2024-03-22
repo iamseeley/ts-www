@@ -60,15 +60,15 @@ img {
     margin-top: .9em;
 }
 
-@media (min-width: 625px) {
+/* @media (min-width: 625px) {
     img {
-        max-width: 75%; /* Images will take up 75% width of their container */
+        max-width: 75%; 
+        
     }
-}
+} */
 
 figure {
     margin: 0;
-    
 }
 
 
