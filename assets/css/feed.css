@@ -4,11 +4,12 @@
     --box-shadow: hsl(193, 11%, 61%); /* As before, for contrast */
     --text-color-1: #000000; /* Much lighter for primary text */
     --text-color-2: #707477;
-    --font-family: Verdana, Geneva, Tahoma, sans-serif;
+    --font-family: sans-serif;
     --acent: #5675D2;
     --acent-lighter: #678CFC;
     --content-width: 39em;
 }
+
 
 
 
@@ -228,6 +229,11 @@ p, li {
 
 .list ul h4 {
     margin: 0;
+    margin-bottom: .2em;
+}
+
+.list ul span {
+    margin-left: .35em;
 }
 
 .list li {

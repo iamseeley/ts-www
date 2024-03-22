@@ -12,14 +12,14 @@
                     {{ if eq .Collection "posts" }}
                        
                             <li>
-                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4></a>
+                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; post</span></h4>
                             </li>
                         
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
+                            <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; project</span></h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -36,12 +36,12 @@
                     {{ end  }}
                     {{ if eq .Collection "bookmarks" }}
                     <li>
-                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
+                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; bookmark</span></h4>
                     </li>
                     {{ end  }}
                     {{ if eq .Collection "logs" }}
                     <li>
-                        <h4><strong>{{ .Date }}</strong></h3>
+                        <h4><strong>{{ .Date }}</strong><span>&#10020; log</span></h4>
                         <p>{{ .Description }}</p>
                     </li>
                     {{ end  }}
