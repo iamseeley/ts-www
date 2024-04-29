@@ -66,14 +66,19 @@
     margin-top: 16px;
     margin-bottom: 16px;
     padding-bottom: 16px;
-    border-bottom: dotted 2px;
   }
   
   nav {
     display: flex;
     flex-direction: row;
     gap: 8px;
+    margin-top: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: dotted 2px;
+    border-top: dotted 2px;
   }
+
   
   main {
     max-width: 624px;
