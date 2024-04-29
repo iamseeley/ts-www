@@ -59,7 +59,7 @@
   }
 
   a:hover {
-    color: blue;
+    color: #3b82f6;
   }
   
   p {
@@ -132,4 +132,14 @@
 
   footer .socials a:hover {
     opacity: 75%;
+  }
+
+  .feed {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .feed p {
+    margin: 0;
   }
