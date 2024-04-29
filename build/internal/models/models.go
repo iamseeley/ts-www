@@ -11,5 +11,4 @@ type Content struct {
 	Theme       string `json:"theme"` // Assuming theme is consistent across content
 	Collection  string `json:"collection"`
 	Date        string `json:"date,omitempty"`
-	OGImageURL  string `json:"ogImageUrl"`
 }

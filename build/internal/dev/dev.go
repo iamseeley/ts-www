@@ -11,7 +11,6 @@ import (
 	"strings"
 	"ts-www/build/internal/config"
 	"ts-www/build/internal/models"
-	"ts-www/build/internal/ogimage"
 	"ts-www/build/internal/utils"
 
 	"github.com/fsnotify/fsnotify"
@@ -148,76 +147,6 @@ func appendFrontmatter(filePath, collection string, contentDir string) error {
 	return nil
 }
 
-// func appendFrontmatter(filePath, collection string) error {
-// 	// Define frontmatter templates for each collection
-// 	templates := map[string]string{
-// 		"notes": `---
-// title: Your Note Title
-// summary: A brief summary of the note.
-// tags: [tag1, tag2]
-// date: YYYY-MM-DD
-// draft: false
-// ---
-// `,
-// 		"logs": `---
-// title: Your Log Title
-// date: YYYY-MM-DD
-// draft: false
-// content:
-// ---
-// `,
-// 		"page": `---
-// title: Your Page Title
-// description: A brief description of the page
-// draft: false
-// ---
-// `,
-// 		"posts": `---
-// title: Your Post Title
-// description: A brief description of the post
-// date: YYYY-MM-DD
-// draft: false
-// ---
-// `,
-// 		"collections": `---
-// title: Your Collection Title
-// description: A brief description of the collection
-// type: Link, Book, Blog, etc...?
-// draft: false
-// ---
-// `,
-// 		// Add more templates for other collections as needed
-// 	}
-
-// 	// Select the appropriate template based on the collection name
-// 	template, ok := templates[collection]
-// 	if !ok {
-// 		log.Printf("No frontmatter template for collection: %s", collection)
-// 		return fmt.Errorf("no frontmatter template for collection: %s", collection)
-// 	}
-
-// 	// Read the existing content of the file
-// 	existingContent, err := os.ReadFile(filePath)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	// Create a new file with the same name (overwriting the existing file)
-// 	file, err := os.Create(filePath)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	defer file.Close()
-
-// 	// Write the template and then the existing content to the file
-// 	if _, err := file.WriteString(template + string(existingContent)); err != nil {
-// 		return err
-// 	}
-
-// 	log.Printf("Frontmatter appended to file in collection '%s': %s", collection, filePath)
-// 	return nil
-// }
-
 func createTemplateForDir(dirName, templateDir string) {
 	templatePath := filepath.Join(templateDir, dirName+".html")
 	if _, err := os.Stat(templatePath); os.IsNotExist(err) {
@@ -275,9 +204,9 @@ func pageHandler(w http.ResponseWriter, r *http.Request, filePath string) {
 	}
 
 	// Generate the OG Image URL
-	ogImageFileName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
-	ogImageUrl := "/public/og-image/" + ogImageFileName
-	p.OGImageURL = ogImageUrl
+	// ogImageFileName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
+	// ogImageUrl := "/public/og-image/" + ogImageFileName
+	// p.OGImageURL = ogImageUrl
 
 	collection := filepath.Base(filepath.Dir(filePath))
 
@@ -357,7 +286,7 @@ func StartServer() {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
 
-	go ogimage.GenerateAllOGImages(cfg.ContentPath, "assets/og-image/")
+	// go ogimage.GenerateAllOGImages(cfg.ContentPath, "assets/og-image/")
 	go watchContentDirectory("content", "templates")
 	go watchForNewMarkdownFiles("content")
 
@@ -378,10 +307,9 @@ func StartServer() {
 		}
 	})
 
-	// http.Handle("/", http.RedirectHandler("/index", http.StatusSeeOther))
 	fs := http.FileServer(http.Dir("src/public"))
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
-	// http.HandleFunc("/", makeHandler(pageHandler))
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

@@ -3,8 +3,6 @@ package ogimage
 import (
 	"log"
 	"os"
-
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"ts-www/build/internal/models"
@@ -18,71 +16,71 @@ type ContentItem struct {
 }
 
 // GenerateAllOGImages walks through the content directory and generates OG images for each Markdown file
-func GenerateAllOGImages(contentDir, outputDir string) error {
-	contentItems, err := GetAllContentItems(contentDir)
-	if err != nil {
-		log.Printf("Error getting content items: %v", err)
-		return err
-	}
+// func GenerateAllOGImages(contentDir, outputDir string) error {
+// 	contentItems, err := GetAllContentItems(contentDir)
+// 	if err != nil {
+// 		log.Printf("Error getting content items: %v", err)
+// 		return err
+// 	}
 
-	for _, item := range contentItems {
-		log.Printf("Processing file: %s", item.FilePath)
-		if err := GenerateOGImageForFile(item.FilePath, outputDir); err != nil {
-			log.Printf("Failed to generate OG image for %s: %v", item.FilePath, err)
-		}
-	}
+// 	for _, item := range contentItems {
+// 		log.Printf("Processing file: %s", item.FilePath)
+// 		if err := GenerateOGImageForFile(item.FilePath, outputDir); err != nil {
+// 			log.Printf("Failed to generate OG image for %s: %v", item.FilePath, err)
+// 		}
+// 	}
 
-	return nil
-}
+// 	return nil
+// }
 
 // GenerateOGImageForFile generates an OG image for a single Markdown file
-func GenerateOGImageForFile(filePath, outputDir string) error {
-	page, err := utils.LoadPageFromDirectory(filepath.Dir(filePath)+"/", filepath.Base(filePath))
-	if err != nil {
-		log.Printf("Error loading page: %v", err)
-		return err
-	}
+// func GenerateOGImageForFile(filePath, outputDir string) error {
+// 	page, err := utils.LoadPageFromDirectory(filepath.Dir(filePath)+"/", filepath.Base(filePath))
+// 	if err != nil {
+// 		log.Printf("Error loading page: %v", err)
+// 		return err
+// 	}
 
-	// Define paths for the temporary HTML file and the final OG image
-	tempHTMLFilePath := filepath.Join(outputDir, "temp-og-image.html")
-	imageName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
-	imagePath := filepath.Join(outputDir, imageName)
+// 	// Define paths for the temporary HTML file and the final OG image
+// 	tempHTMLFilePath := filepath.Join(outputDir, "temp-og-image.html")
+// 	imageName := strings.TrimSuffix(filepath.Base(filePath), filepath.Ext(filePath)) + "-og-image.png"
+// 	imagePath := filepath.Join(outputDir, imageName)
 
-	if _, err := os.Stat(imagePath); err == nil {
-		log.Printf("OG image already exists for %s, skipping...", filePath)
-		return nil
-	}
+// 	if _, err := os.Stat(imagePath); err == nil {
+// 		log.Printf("OG image already exists for %s, skipping...", filePath)
+// 		return nil
+// 	}
 
-	// Ensure the output directory exists
-	if err := os.MkdirAll(filepath.Dir(imagePath), os.ModePerm); err != nil {
-		log.Printf("Error creating output directory: %v", err)
-		return err
-	}
+// 	// Ensure the output directory exists
+// 	if err := os.MkdirAll(filepath.Dir(imagePath), os.ModePerm); err != nil {
+// 		log.Printf("Error creating output directory: %v", err)
+// 		return err
+// 	}
 
-	// Render the OG image template to the temporary HTML file
-	if err := utils.RenderTemplateStatic(tempHTMLFilePath, "og-image", page); err != nil {
-		log.Printf("Error rendering OG image template: %v", err)
-		return err
-	}
+// 	// Render the OG image template to the temporary HTML file
+// 	if err := utils.RenderTemplateStatic(tempHTMLFilePath, "og-image", page); err != nil {
+// 		log.Printf("Error rendering OG image template: %v", err)
+// 		return err
+// 	}
 
-	// Execute screenshot command
-	cmd := exec.Command("node", "scripts/screenshot.js", tempHTMLFilePath, imagePath)
-	if err := cmd.Run(); err != nil {
-		log.Printf("Failed to generate OG image for %s: %v", filePath, err)
-		// Attempt to delete the temporary HTML file even if screenshot fails
-		_ = os.Remove(tempHTMLFilePath)
-		return err
-	}
+// 	// Execute screenshot command
+// 	cmd := exec.Command("node", "scripts/screenshot.js", tempHTMLFilePath, imagePath)
+// 	if err := cmd.Run(); err != nil {
+// 		log.Printf("Failed to generate OG image for %s: %v", filePath, err)
+// 		// Attempt to delete the temporary HTML file even if screenshot fails
+// 		_ = os.Remove(tempHTMLFilePath)
+// 		return err
+// 	}
 
-	// Delete the temporary HTML file
-	if err := os.Remove(tempHTMLFilePath); err != nil {
-		log.Printf("Error removing temporary file: %v", err)
-	}
+// 	// Delete the temporary HTML file
+// 	if err := os.Remove(tempHTMLFilePath); err != nil {
+// 		log.Printf("Error removing temporary file: %v", err)
+// 	}
 
-	page.OGImageURL = "/public/og-image/" + imageName
+// 	page.OGImageURL = "/public/og-image/" + imageName
 
-	return nil
-}
+// 	return nil
+// }
 
 // GetAllContentItems retrieves all content items from the content directory
 func GetAllContentItems(contentDir string) ([]ContentItem, error) {

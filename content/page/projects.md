@@ -1,8 +1,8 @@
 ---
-title: Projects
+title: projects
 description: Thomas Seeley's projects
 draft: false
 ---
 
-## Projects
+### projects
 

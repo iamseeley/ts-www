@@ -4,6 +4,6 @@
     "templatePath": "./templates/",
     "contentPath": "./content/",
     "outputPath": "./src/",
-    "themeName": "feed",
+    "themeName": "styles",
     "dataPath": "./data/"
 }

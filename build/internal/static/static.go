@@ -101,19 +101,19 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 	}
 
 	// Generate the OG Image URL
-	ogImageFileName := strings.TrimSuffix(filepath.Base(outputPath), filepath.Ext(outputPath)) + "-og-image.png"
-	ogImageUrl := "/public/og-image/" + ogImageFileName
-	page.OGImageURL = ogImageUrl
+	// ogImageFileName := strings.TrimSuffix(filepath.Base(outputPath), filepath.Ext(outputPath)) + "-og-image.png"
+	// ogImageUrl := "/public/og-image/" + ogImageFileName
+	// page.OGImageURL = ogImageUrl
 
 	// Determine template based on the collection (parent directory name)
 	collection := filepath.Base(filepath.Dir(mdPath))
 	tmplName := collection
 
-	// Use the collection's template; default to "site.html" if not found
+	// Use the collection's template; default to "page.html" if not found
 	tmpl := utils.Templates.Lookup(tmplName + ".html")
 	if tmpl == nil {
-		log.Printf("Template %s.html not found, using default site.html", tmplName)
-		tmpl = utils.Templates.Lookup("site.html")
+		log.Printf("Template %s.html not found, using default page.html", tmplName)
+		tmpl = utils.Templates.Lookup("page.html")
 	}
 
 	feed, err := utils.LoadFeed(cfg.ContentPath)
@@ -150,12 +150,6 @@ func generateHTML(mdPath, outputDir string, data map[string]interface{}, cfg *co
 		log.Printf("Error rendering template: %v", err)
 		return err
 	}
-	// Save the rendered HTML
-	// err = os.WriteFile(outputPath, templateData.Page.Body, 0644)
-	// if err != nil {
-	// 	log.Printf("Error writing file: %v", err)
-	// 	return err
-	// }
 
 	return nil
 }

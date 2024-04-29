@@ -1,6 +1,6 @@
 ---
-title: Emoji Hack
-description: Build something for every single emoji
+title: emoji hack
+description: build something for every emoji
 date: 2024-03-15
 url: https://github.com/iamseeley/emojihack
 featured: false

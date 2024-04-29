@@ -1,16 +1,18 @@
 ---
-title: 'About'
-description: 'A little bit about Thomas Seeley'
+title: 'about'
+description: 'a little bit about thomas seeley'
 ---
 
-## About
+### about
 
-Hi there, my name is Thomas and I make things for the web. I mostly find myself developing websites, and experimenting with web technologies.
 
-Nowadays, I'm primarily coding in TypeScript, but I enjoy switching it up and building things with Go and Python.
+<img class='profile' src='/public/images/profile.jpg' />
 
-I am currently looking for full-time roles as a front-end or full-stack developer. Please reach out via email [hello@tseeley.com](mailto:hello@tseeley.com) if you would like to talk!
+my name is thomas seeley. i'm passionate about building for the web and creating useful, fun software.
 
-### Now
 
-I recently started a part-time MS CS program to further improve my programming skills and go deeper on some computer science topics I'm interested in. 
+i spend my time making things and trying to get better at making things.
+
+i'm currently pursuing a ms in cs with a focus on data mining and intelligent systems.
+
+reach out if you'd like to work together, or if you just want to say hi! [hello@tseeley.com](mailto:hello@tseeley.com) 

@@ -4,7 +4,7 @@
         <section class="">
             {{ .Page.Body | markDown }}
         </section>
-        {{ if eq .Page.Title "Home"}}
+        {{ if eq .Page.Title "index"}}
             <section class="list">
                 <ul>
                 {{ range .Feed }}
@@ -12,38 +12,17 @@
                     {{ if eq .Collection "posts" }}
                        
                             <li>
-                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; post</span></h4>
+                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
                             </li>
                         
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a target="_blank" rel="noreferrer noopener" href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; project</span></h4>
+                            <h4><a target="_blank" rel="noreferrer noopener" href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
-                    {{ end  }}
-                    {{ if eq .Collection "photos" }}
-                   
-                        <li>
-                            <figure>
-                                <img src="{{ .URL }}" />
-                                <p>{{ .Description }}</p>
-                            </figure>
-                        </li>
-                   
-                    {{ end  }}
-                    {{ if eq .Collection "bookmarks" }}
-                    <li>
-                        <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a><span>&#10020; bookmark</span></h4>
-                    </li>
-                    {{ end  }}
-                    {{ if eq .Collection "logs" }}
-                    <li>
-                        <h4><strong>{{ .Date }}</strong><span>&#10020; log</span></h4>
-                        <p>{{ .Description }}</p>
-                    </li>
                     {{ end  }}
                    
                 {{ end }}
@@ -52,19 +31,8 @@
             
         {{ end }}
         <section class="list">
-        {{ if eq .Page.Title "Bookmarks"}}
-            <ul>
-                {{ range .Data.bookmarks }}
-                {{ if eq .frontMatter.draft false}}
-                    <li>
-                        <h4><a href="{{ .frontMatter.url }}"><strong>{{ .frontMatter.title }}</strong></a> by {{ .frontMatter.author }}</h4>
-                        <p class="">{{ .frontMatter.description }}</p>
-                    </li>
-                {{ end }}
-                {{ end }}
-            </ul>
      
-        {{ else if eq .Page.Title "Posts" }}
+        {{ if eq .Page.Title "Posts" }}
             <ul>
                 {{ range .Data.posts }}
                 {{ if eq .frontMatter.draft false}}
@@ -77,22 +45,8 @@
                 {{end}}
                 {{end}}
             </ul>
-
-            {{ else if eq .Page.Title "Photos" }}
-            <ul>
-                {{ range .Data.photos }}
-                {{ if eq .frontMatter.draft false}}
-                    <li>
-                        <figure>
-                            <img src="{{ .frontMatter.url }}" />
-                            <p>{{ .frontMatter.description }}</p>
-                        </figure>
-                    </li>
-                {{end}}
-                {{end}}
-            </ul>
        
-            {{ else if eq .Page.Title "Projects" }}
+        {{ else if eq .Page.Title "Projects" }}
             <ul>
                 {{ range .Data.projects }}
                 {{ if eq .frontMatter.draft false}}
@@ -106,21 +60,7 @@
                 {{end}}
                 {{end}}
             </ul>
-        {{ else if eq .Page.Title "Captain's Log" }}
-            <ul>
-                {{ range .Data.logs }}
-                    {{ if eq .frontMatter.draft false }}
-                    <li>
-                        
-                        <!-- <p class="log-header"><strong>{{ .frontMatter.title }}</strong></p> -->
-                        <h4><time><strong>{{ .frontMatter.date }}</strong></time></h4>
-                        <p>{{ .frontMatter.description }}</p>
-                        
-                    </li>
-                    {{end}}
-                {{end}}
-            </ul>
-        {{ end }}
+        {{end}}
     </section>
         
         {{template "_bottom" .}}

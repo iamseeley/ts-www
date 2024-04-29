@@ -1,8 +1,8 @@
 ---
-title: Posts
+title: writing
 description: Focused writings.
 ---
 
-## Posts
+### feed
 
 

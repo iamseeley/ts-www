@@ -1,11 +1,9 @@
 ---
-title: Home
+title: index
 description: Thomas Seeley's personal website.
 ---
 
-## Hi, I’m Thomas
-
-This feed consists of [posts](/posts) I’ve written, [projects](/projects) I’ve built, random [logs](/logs),  [photos](/photos), and [bookmarks](/bookmarks) of interesting content.
+### feed
 
 <!-- <p class="topics"></p> -->
 

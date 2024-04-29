@@ -4,21 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ if eq .Page.Title "Home"}}
-    <title>Thomas Seeley</title>
+    {{ if eq .Page.Title "index"}}
+    <title>thomas seeley</title>
     {{ else }}
-    <title>{{.Page.Title}} ~ Thomas Seeley</title>
+    <title>{{.Page.Title}} ~ thomas seeley</title>
     {{ end }}
     <meta name="description" content="{{ .Page.Description }}">
-    <meta property="og:title" content="{{ .Page.Title }} ~ Thomas Seeley">
+    <meta property="og:title" content="{{ .Page.Title }} ~ thomas seeley">
     <meta property="og:description" content="{{ .Page.Description }}">
-    <meta property="og:image" content="{{ .Page.OGImageURL }}">
     <meta name="twitter:site" content="@iamseeley">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="{{ .Page.Title }} ~ Thomas Seeley">
+    <meta property="twitter:title" content="{{ .Page.Title }} ~ thomas seeley">
     <meta property="twitter:description" content="{{ .Page.Description }}">
-    <meta property="twitter:image" content="https://tseeley.com{{ .Page.OGImageURL }}">
-    <meta property="twitter:image:src" content="https://tseeley.com{{ .Page.OGImageURL }}">
     <link type="text/css" rel="stylesheet" href="/public/css/{{.Page.Theme}}.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
@@ -28,8 +25,11 @@
 <body>
     <div class="wrap">
     <header>
-        <a href="/"><div class="blob"></div></a>
-        
+        <h2>thomas seeley</h2>
+        <p>exploring what can be made with the tools we have</p>
+        <nav>
+            <a href="/">feed</a><a href="/posts">writing</a><a href="/projects">projects</a><a href="/about">about</a>
+        </nav>  
     </header>
     <main>
 {{end}}
