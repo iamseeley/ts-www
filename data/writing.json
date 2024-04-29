@@ -11,24 +11,22 @@
     }
   },
   "base": {
-    "body": "",
+    "body": "\n",
     "frontMatter": {
       "date": "YYYY-MM-DD",
-      "description": "Post 1 this is.",
+      "description": "Description",
       "draft": true,
-      "featured": false,
-      "title": "Introductions",
-      "url": "url"
+      "title": "Title"
     }
   },
   "intro": {
-    "body": "\n\nHi, my name is Thomas and I like making things. I'll share those things here.\n\nSound good? Okay.\n\nBest,\n\nThomas",
+    "body": "\n\nhi, my name is fhomas and i like making things. i'll share those things here.\n\nsound good? okay.\n\nbest,\n\nthomas",
     "frontMatter": {
       "date": "2023-10-05",
       "description": "Post 1 this is.",
       "draft": false,
       "featured": true,
-      "title": "Introductions",
+      "title": "introductions",
       "url": "/posts/intro"
     }
   }

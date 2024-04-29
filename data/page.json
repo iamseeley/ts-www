@@ -13,19 +13,19 @@
       "title": "index"
     }
   },
-  "posts": {
-    "body": "\n\n### feed\n\n\n",
-    "frontMatter": {
-      "description": "Focused writings.",
-      "title": "writing"
-    }
-  },
   "projects": {
     "body": "\n\n### projects\n\n",
     "frontMatter": {
       "description": "Thomas Seeley's projects",
       "draft": false,
       "title": "projects"
+    }
+  },
+  "writing": {
+    "body": "\n\n### writing\n\n\n",
+    "frontMatter": {
+      "description": "Focused writings.",
+      "title": "writing"
     }
   }
 }

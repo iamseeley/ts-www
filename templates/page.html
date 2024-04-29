@@ -9,7 +9,7 @@
                 <ul class="feed">
                 {{ range .Feed }}
                     
-                    {{ if eq .Collection "posts" }}
+                    {{ if eq .Collection "writing" }}
                        
                             <li>
                                 <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
@@ -32,9 +32,9 @@
         {{ end }}
         <section class="list">
      
-        {{ if eq .Page.Title "Posts" }}
-            <ul>
-                {{ range .Data.posts }}
+        {{ if eq .Page.Title "writing" }}
+            <ul class="feed">
+                {{ range .Data.writing }}
                 {{ if eq .frontMatter.draft false}}
                     <li> 
                         <h4>
@@ -46,8 +46,8 @@
                 {{end}}
             </ul>
        
-        {{ else if eq .Page.Title "Projects" }}
-            <ul>
+        {{ else if eq .Page.Title "projects" }}
+            <ul class="feed">
                 {{ range .Data.projects }}
                 {{ if eq .frontMatter.draft false}}
                     <li> 
