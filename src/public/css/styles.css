@@ -43,10 +43,14 @@
     padding: 16px;
     margin-right: 24px;
   }
+
+  h1, h2, h3 {
+    font-size: 20px;
+  }
+
   
   h1, h2, h3, h4, h5 {
     font-weight: bold;
-    font-size: 16px;
   }
   
   a {
@@ -106,4 +110,8 @@
   .profile {
     height: 84px;
     width: 84px;
+  }
+
+  img {
+    margin-top: 16px;
   }

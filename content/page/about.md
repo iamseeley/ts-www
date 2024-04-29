@@ -3,7 +3,7 @@ title: 'about'
 description: 'a little bit about thomas seeley'
 ---
 
-### about
+<h3 class="header">about</h3>
 
 
 <img class='profile' src='/public/images/profile.jpg' />
