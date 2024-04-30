@@ -188,7 +188,7 @@
 
 .modal {
   opacity: 0;
-  position: absolute;
+  position: fixed; /* Changed from absolute to fixed for viewport relative positioning */
   background: white;
   padding: 20px;
   border-radius: 5px;
@@ -196,8 +196,8 @@
         0 2px 4px rgba(0, 0, 0, 0.1),
         0 4px 6px rgba(0, 0, 0, 0.1),
         0 30px 60px rgba(0, 0, 0, 0.12);
-  z-index: 1001;
-  width: 400px; /* Smaller modal width */
+  z-index: 1002;
+  width: 400px; /* Fixed modal width */
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   transform: translateY(20px);
 }
@@ -210,23 +210,16 @@
 #modal-container {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 #modal-container.show {
   display: block;
 }
 
-
-
 @media (max-width: 600px) {
-    .modal {
-        width: 80%; /* Larger on small screens */
-        max-width: none;
-    }
+  .modal {
+    width: 80%; /* Responsive width on smaller screens */
+  }
 }
 

@@ -6,20 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('main .external-link').forEach(link => {
     link.addEventListener('mouseenter', function(event) {
-      clearTimeout(showTimeout);
       clearTimeout(hideTimeout);
+      clearTimeout(showTimeout);
       showTimeout = setTimeout(() => showModal(this, event), 700);
     });
 
     link.addEventListener('mouseleave', function(event) {
-      clearTimeout(showTimeout);
-      hideTimeout = setTimeout(hideModal, 700);
+      // Check if the mouse leaves the link but doesn't enter the modal
+      if (!event.relatedTarget || !event.relatedTarget.closest('.modal')) {
+        clearTimeout(showTimeout);
+        hideTimeout = setTimeout(hideModal, 300);
+      }
     });
 
     link.addEventListener('click', function(event) {
       event.preventDefault();
-      clearTimeout(showTimeout);
       clearTimeout(hideTimeout);
+      clearTimeout(showTimeout);
       showModal(this, event);
     });
   });
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const url = element.href;
   
     const modal = document.createElement('div');
+   
     modal.classList.add('modal');
     modal.innerHTML = `
       <p>${description}</p>
@@ -55,15 +59,15 @@ document.addEventListener('DOMContentLoaded', function() {
     currentModal = modal;
     modalContainer.classList.add('show');
   
-    // Calculate positions based on the link position and viewport dimensions
+    // Get link position relative to viewport and add scroll offset to calculate absolute position
     const linkRect = element.getBoundingClientRect();
     const modalRect = modal.getBoundingClientRect();
-    let topPosition = linkRect.bottom + window.scrollY + 6; // Correct vertical position considering scroll
+    let topPosition = linkRect.bottom + window.scrollY + 6;
   
     let leftPosition = event.clientX - (modalRect.width / 2);
   
-    // Adjust positions to keep the modal within the viewport
-    if (topPosition + modalRect.height > window.innerHeight + window.scrollY) {
+    // Adjust vertical position to ensure the modal is visible within the viewport
+    if (topPosition + modalRect.height > window.scrollY + window.innerHeight) {
       topPosition = linkRect.top + window.scrollY - (modalRect.height + 8); // Place above the link if it doesn't fit below
     }
     if (leftPosition < 0) {
@@ -74,9 +78,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
     modal.style.top = `${topPosition}px`;
     modal.style.left = `${leftPosition}px`;
+
+    modal.addEventListener('mouseleave', function(modalEvent) {
+      if (!modalEvent.relatedTarget || !modalEvent.relatedTarget.closest('.external-link')) {
+        hideTimeout = setTimeout(hideModal, 300);
+      }
+    });
   
     setTimeout(() => modal.classList.add('show'), 0);
   }
+  
   
 
   function hideModal() {
