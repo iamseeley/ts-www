@@ -59,11 +59,11 @@
   
   a {
     text-decoration: none;
-    color: inherit;
+    color: #3b82f6;
   }
 
   a:hover {
-    color: #3b82f6;
+    text-decoration: underline;
   }
   
   p {
@@ -72,8 +72,11 @@
   
   header {
     margin-top: 16px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  header p {
+    font-size: 14px;
   }
   
   nav {
@@ -83,8 +86,12 @@
     margin-top: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
-    border-bottom: dotted 2px;
-    border-top: dotted 2px;
+    border-bottom: solid lightgray 1px;
+  }
+
+  nav a:hover {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 10px;
   }
 
   
@@ -103,6 +110,12 @@
     flex-direction: row;
     gap: 8px;
     margin-bottom: 16px;
+  }
+
+  footer .copy {
+    padding-top: 8px;
+    border-top: solid lightgray 1px;
+    font-size: 14px;
   }
   
   main ul, main ol {
@@ -146,4 +159,16 @@
 
   .feed p {
     margin: 0;
+  }
+
+  .feed-section {
+    background-color: #dbeafe;
+    border: solid #bfdbfe 1px;
+    padding: 8px;
+  }
+
+  .feed-section h3 {
+    padding: 8px;
+    background-color: #93c5fd;
+    border: solid #60a5fa 1px;
   }

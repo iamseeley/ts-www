@@ -5,7 +5,8 @@
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "index"}}
-            <section class="list">
+            <section class="feed-section">
+                <h3>feed</h3>
                 <ul class="feed">
                 {{ range .Feed }}
                     
