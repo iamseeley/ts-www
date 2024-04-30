@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (currentModal) {
       return;
     }
-
+  
     const title = element.getAttribute('data-title');
     const description = element.getAttribute('data-description');
     const image = element.getAttribute('data-image');
     const url = element.href;
-
+  
     const modal = document.createElement('div');
     modal.classList.add('modal');
     modal.innerHTML = `
@@ -42,25 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
       <button class="proceed-btn">Proceed</button>
       <button class="close-btn">Close</button>
     `;
-
+  
     modalContainer.innerHTML = '';
     modalContainer.appendChild(modal);
-
+  
     modal.querySelector('.proceed-btn').onclick = function() {
       window.location.href = url;
     };
-
+  
     modal.querySelector('.close-btn').addEventListener('click', hideModal);
-
+  
     currentModal = modal;
     modalContainer.classList.add('show');
-
+  
     // Calculate positions based on the link position and viewport dimensions
     const linkRect = element.getBoundingClientRect();
     const modalRect = modal.getBoundingClientRect();
-    let topPosition = linkRect.top + window.scrollY + (linkRect.height + 6); // Offset below the link
+    let topPosition = linkRect.bottom + window.scrollY + 6; // Correct vertical position considering scroll
+  
     let leftPosition = event.clientX - (modalRect.width / 2);
-
+  
     // Adjust positions to keep the modal within the viewport
     if (topPosition + modalRect.height > window.innerHeight + window.scrollY) {
       topPosition = linkRect.top + window.scrollY - (modalRect.height + 8); // Place above the link if it doesn't fit below
@@ -70,12 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (leftPosition + modalRect.width > window.innerWidth) {
       leftPosition = window.innerWidth - modalRect.width - 10; // Padding from the right edge of the viewport
     }
-
+  
     modal.style.top = `${topPosition}px`;
     modal.style.left = `${leftPosition}px`;
-
+  
     setTimeout(() => modal.classList.add('show'), 0);
   }
+  
 
   function hideModal() {
     if (!currentModal) {
