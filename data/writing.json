@@ -7,7 +7,7 @@
       "draft": false,
       "featured": false,
       "title": "about this site",
-      "url": "/posts/about-this-site"
+      "url": "/writing/about-this-site"
     }
   },
   "base": {
@@ -27,7 +27,7 @@
       "draft": false,
       "featured": true,
       "title": "introductions",
-      "url": "/posts/intro"
+      "url": "/writing/intro"
     }
   }
 }

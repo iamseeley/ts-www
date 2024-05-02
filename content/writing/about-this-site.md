@@ -2,7 +2,7 @@
 title: about this site
 description: a little note about this website
 date: 2023-12-02
-url: /posts/about-this-site
+url: /writing/about-this-site
 draft: false
 featured: false
 ---

@@ -4,5 +4,3 @@ description: Thomas Seeley's projects
 draft: false
 ---
 
-### projects
-
