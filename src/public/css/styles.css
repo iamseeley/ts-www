@@ -59,7 +59,7 @@
   
   a {
     text-decoration: none;
-    color: #3b82f6;
+    color: #2563eb;
   }
 
   a:hover {
@@ -175,40 +175,40 @@
   }
 
   .writing-section {
-    background-color: #eff6ff;
-    border: solid #bfdbfe 1px;
+    background-color: #ecfdf5;
+    border: solid #bbf7d0 1px;
     padding: 8px;
   }
 
   .writing-section h3 {
     padding: 8px;
-    background-color: #dbeafe;
+    background-color: #dcfce7;
     border: solid #d1d5db 1px;
     margin-bottom: 8px;
   }
 
   .project-section {
-    background-color: #eff6ff;
-    border: solid #bfdbfe 1px;
+    background-color: #f5f3ff;
+    border: solid #ddd6fe 1px;
     padding: 8px;
   }
 
   .project-section h3 {
     padding: 8px;
-    background-color: #dbeafe;
+    background-color: #ede9fe;
     border: solid #d1d5db 1px;
     margin-bottom: 8px;
   }
 
   .about-section {
-    background-color: #eff6ff;
-    border: solid #bfdbfe 1px;
+    background-color: #fff1f2;
+    border: solid #fecdd3 1px;
     padding: 8px;
   }
 
   .about-section h3 {
     padding: 8px;
-    background-color: #dbeafe;
+    background-color: #ffe4e6;
     border: solid #d1d5db 1px;
     margin-bottom: 8px;
   }
