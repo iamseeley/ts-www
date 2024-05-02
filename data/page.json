@@ -1,6 +1,6 @@
 {
   "about": {
-    "body": "\n\n\u003ch3 class=\"header\"\u003eabout\u003c/h3\u003e\n\n\n\u003cimg class='profile' src='/public/images/profile.jpg' /\u003e\n\nmy name is thomas seeley. i'm passionate about building for the web and creating useful, fun software.\n\n\ni spend my time making things and trying to get better at making things.\n\ni'm currently pursuing a ms in cs with a focus on data mining and intelligent systems.\n\nreach out if you'd like to work together, or if you just want to say hi! [hello@tseeley.com](mailto:hello@tseeley.com) \n",
+    "body": "\n\n\u003ch3 class=\"header\"\u003eabout\u003c/h3\u003e\n\n\n\u003cimg class='profile' src='/public/images/profile.jpg' /\u003e\n\nmy name is thomas seeley. i like building for the web and creating useful, fun software.\n\ni spend my time making things and trying to get better at making things.\n\ni'm currently pursuing a ms in cs with a focus on data mining and intelligent systems.\n\nreach out if you'd like to work together, or if you just want to say hi! [hello@tseeley.com](mailto:hello@tseeley.com) \n",
     "frontMatter": {
       "description": "a little bit about thomas seeley",
       "title": "about"

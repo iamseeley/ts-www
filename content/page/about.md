@@ -8,8 +8,7 @@ description: 'a little bit about thomas seeley'
 
 <img class='profile' src='/public/images/profile.jpg' />
 
-my name is thomas seeley. i'm passionate about building for the web and creating useful, fun software.
-
+my name is thomas seeley. i like building for the web and creating useful, fun software.
 
 i spend my time making things and trying to get better at making things.
 

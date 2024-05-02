@@ -162,15 +162,15 @@
   }
 
   .feed-section {
-    background-color: #dbeafe;
+    background-color: #eff6ff;
     border: solid #bfdbfe 1px;
     padding: 8px;
   }
 
   .feed-section h3 {
     padding: 8px;
-    background-color: #93c5fd;
-    border: solid #60a5fa 1px;
+    background-color: #dbeafe;
+    border: solid #d1d5db 1px;
     margin-bottom: 8px;
   }
 
