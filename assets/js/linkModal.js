@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('mouseenter', function(event) {
       clearTimeout(hideTimeout);
       clearTimeout(showTimeout);
-      showTimeout = setTimeout(() => showModal(this, event), 700);
+      showTimeout = setTimeout(() => showModal(this, event), 600);
     });
 
     link.addEventListener('mouseleave', function(event) {
       if (!event.relatedTarget || !event.relatedTarget.closest('.modal')) {
         clearTimeout(showTimeout);
-        hideTimeout = setTimeout(hideModal, 300);
+        hideTimeout = setTimeout(hideModal, 400);
       }
     });
 
@@ -41,18 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.innerHTML = `
       <p>${description}</p>
       <img src="${image}" alt="${title}" style="max-width: 100px; max-height: 100px;">
-      <button class="proceed-btn">Proceed</button>
-      <button class="close-btn">Close</button>
     `;
 
     modalContainer.innerHTML = '';
     modalContainer.appendChild(modal);
 
-    modal.querySelector('.proceed-btn').onclick = function() {
-      window.location.href = url;
-    };
-
-    modal.querySelector('.close-btn').addEventListener('click', hideModal);
 
     currentModal = modal;
     modalContainer.classList.add('show');
