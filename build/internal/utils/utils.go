@@ -115,6 +115,21 @@ func LoadPageFromDirectory(directory, title string) (*models.Content, error) {
 	contentItem.URL, _ = frontMatter["url"].(string)
 	contentItem.Theme = cfg.ThemeName // Assuming the theme is consistent across all content
 	contentItem.Collection = filepath.Base(filepath.Dir(filename))
+	if DataTitle, ok := frontMatter["data-title"].(string); ok {
+		contentItem.DataTitle = DataTitle
+	} else {
+		contentItem.DataTitle = ""
+	}
+	if DataDescription, ok := frontMatter["data-description"].(string); ok {
+		contentItem.DataDescription = DataDescription
+	} else {
+		contentItem.DataDescription = ""
+	}
+	if DataImage, ok := frontMatter["data-image"].(string); ok {
+		contentItem.DataImage = DataImage
+	} else {
+		contentItem.DataImage = ""
+	}
 
 	return &contentItem, nil
 }

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let showTimeout = null;
   let hideTimeout = null;
 
-  document.querySelectorAll('main .external-link').forEach(link => {
+  document.querySelectorAll('main a').forEach(link => {
     link.addEventListener('mouseenter', function(event) {
       clearTimeout(hideTimeout);
       clearTimeout(showTimeout);
@@ -36,13 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const image = element.getAttribute('data-image');
     const url = element.href;
 
+
     const modal = document.createElement('div');
     modal.classList.add('modal');
     modal.innerHTML = `
       <p>${description}</p>
       <img src="${image}" alt="${title}" style="max-width: 100px; max-height: 100px;">
     `;
-
+    
     modalContainer.innerHTML = '';
     modalContainer.appendChild(modal);
 

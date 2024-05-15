@@ -1,14 +1,16 @@
 package models
 
-// Content represents the basic fields required for rendering content on the site
 type Content struct {
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	Body        []byte `json:"body"`
-	Draft       bool   `json:"draft"`
-	URL         string `json:"URL"`
-	Featured    bool   `json:"featured,omitempty"`
-	Theme       string `json:"theme"` // Assuming theme is consistent across content
-	Collection  string `json:"collection"`
-	Date        string `json:"date,omitempty"`
+	Title           string `json:"title"`
+	Description     string `json:"description"`
+	Body            []byte `json:"body"`
+	Draft           bool   `json:"draft"`
+	URL             string `json:"URL"`
+	Featured        bool   `json:"featured,omitempty"`
+	Theme           string `json:"theme"`
+	Collection      string `json:"collection"`
+	Date            string `json:"date,omitempty"`
+	DataTitle       string `json:"data-title,omitempty"`
+	DataDescription string `json:"data-description,omitempty"`
+	DataImage       string `json:"data-image,omitempty"`
 }

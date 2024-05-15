@@ -5,6 +5,11 @@
             {{ .Page.Body | markDown }}
         </section>
         {{ if eq .Page.Title "index"}}
+            <!-- <section class="hero">
+                <h3>Welcome to my website,</h3>
+                <p>a place where I share my work</p>
+                <p>styles inspired by wikipedia</p>
+            </section> -->
             <section class="feed-section">
                 <h3>feed</h3>
                 <a href="https://example.com" class="external-link" 
@@ -19,7 +24,9 @@
                     {{ if eq .Collection "writing" }}
                        
                             <li>
-                                <h4><a href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
+                                <h4><a href="{{ .URL }}" data-title="{{ .DataTitle }}" 
+                                    data-description="{{ .DataDescription }}"
+                                    data-image="{{ .DataImage }}"><strong>{{ .Title }}</strong></a></h4>
                             </li>
                         
                     {{ end  }}
@@ -76,7 +83,7 @@
         <section class="about-section">
             <h3>about</h3>
             <img class='profile' src='/public/images/profile.jpg' />
-            <div class="feed">
+            <div class="">
                 <p>my name is thomas seeley. i like building for the web and creating useful, fun software.</p>
                 <p>i spend my time making things and trying to get better at making things.</p>
                 <p>i'm currently pursuing a ms in cs with a focus on data mining and intelligent systems.</p>
