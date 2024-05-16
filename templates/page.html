@@ -24,18 +24,18 @@
                     {{ if eq .Collection "writing" }}
                        
                             <li>
-                                <h4><a href="{{ .URL }}" data-title="{{ .DataTitle }}" 
+                                <p><a href="{{ .URL }}" data-title="{{ .DataTitle }}" 
                                     data-description="{{ .DataDescription }}"
-                                    data-image="{{ .DataImage }}"><strong>{{ .Title }}</strong></a></h4>
+                                    data-image="{{ .DataImage }}"><strong>{{ .Title }}</strong></a></p>
                             </li>
                         
                     {{ end  }}
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a target="_blank" rel="noreferrer noopener" data-title="{{ .DataTitle }}" 
+                            <p><a target="_blank" rel="noreferrer noopener" data-title="{{ .DataTitle }}" 
                                 data-description="{{ .DataDescription }}"
-                                data-image="{{ .DataImage }}" href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
+                                data-image="{{ .DataImage }}" href="{{ .URL }}"><strong>{{ .Title }}</strong></a></p>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -55,12 +55,12 @@
                 {{ range .Data.writing }}
                 {{ if eq .frontMatter.draft false}}
                     <li> 
-                        <h4>
+                        <p>
                             <strong><a href="{{ .frontMatter.url }}" data-title="{{ .DataTitle }}" 
                                 data-description="{{ .DataDescription }}"
                                 data-image="{{ .DataImage }}">{{ .frontMatter.title }}</a></strong>
                             <!-- <time><em>{{ .frontMatter.date }}</em></time> -->
-                        </h4>
+                        </p>
                     </li>
                 {{end}}
                 {{end}}
@@ -73,12 +73,12 @@
                 {{ range .Data.projects }}
                 {{ if eq .frontMatter.draft false}}
                     <li> 
-                        <h4>
+                        <p>
                             <strong><a target="_blank" rel="noreferrer noopener" data-title="{{ .DataTitle }}" 
                                 data-description="{{ .DataDescription }}"
                                 data-image="{{ .DataImage }}" href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                            
-                        </h4>
+                        </p>
                         <p>{{ .frontMatter.description }}</p>
                     </li>
                 {{end}}
