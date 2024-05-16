@@ -33,7 +33,9 @@
                     {{ if eq .Collection "projects" }}
                    
                         <li>
-                            <h4><a target="_blank" rel="noreferrer noopener" href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
+                            <h4><a target="_blank" rel="noreferrer noopener" data-title="{{ .DataTitle }}" 
+                                data-description="{{ .DataDescription }}"
+                                data-image="{{ .DataImage }}" href="{{ .URL }}"><strong>{{ .Title }}</strong></a></h4>
                             <p>{{ .Description }}</p>
                         </li>
                    
@@ -54,7 +56,9 @@
                 {{ if eq .frontMatter.draft false}}
                     <li> 
                         <h4>
-                            <strong><a href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                            <strong><a href="{{ .frontMatter.url }}" data-title="{{ .DataTitle }}" 
+                                data-description="{{ .DataDescription }}"
+                                data-image="{{ .DataImage }}">{{ .frontMatter.title }}</a></strong>
                             <!-- <time><em>{{ .frontMatter.date }}</em></time> -->
                         </h4>
                     </li>
@@ -70,7 +74,9 @@
                 {{ if eq .frontMatter.draft false}}
                     <li> 
                         <h4>
-                            <strong><a target="_blank" rel="noreferrer noopener" href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
+                            <strong><a target="_blank" rel="noreferrer noopener" data-title="{{ .DataTitle }}" 
+                                data-description="{{ .DataDescription }}"
+                                data-image="{{ .DataImage }}" href="{{ .frontMatter.url }}">{{ .frontMatter.title }}</a></strong>
                            
                         </h4>
                         <p>{{ .frontMatter.description }}</p>

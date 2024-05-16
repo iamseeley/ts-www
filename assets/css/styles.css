@@ -46,7 +46,7 @@
 
   h1, h2, h3 {
     font-size: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
   }
 
   h3 {
@@ -104,18 +104,19 @@
   footer {
     margin-top: 16px;
     margin-bottom: 16px;
+    border-top: solid lightgray 1px;
   }
   
   footer .socials {
+    padding-top: 8px;
     display: flex;
     flex-direction: row;
     gap: 8px;
-    margin-bottom: 16px;
+    
   }
 
   footer .copy {
     padding-top: 8px;
-    border-top: solid lightgray 1px;
     font-size: 14px;
   }
   

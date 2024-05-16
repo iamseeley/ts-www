@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const url = element.href;
 
 
-    const modal = document.createElement('div');
+    const modal = document.createElement('a');
+    // modal.elem.add(`${url}`)
     modal.classList.add('modal');
     modal.innerHTML = `
       <p>${description}</p>
