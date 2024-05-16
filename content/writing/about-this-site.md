@@ -13,7 +13,7 @@ featured: false
 
 This site is made from a <a href="https://github.com/iamseeley/go-forth">static site generator</a> I wrote in Go. I write my page content in markdown and the files get converted to html!
 
-Over the past few years I've built multiple portfolio websites, mostly with frameworks. I decided to go without one for my personal site and build the features I needed myself. 
+Over the past few years I've built multiple personal websites, mostly with frameworks. For this site I decided to go without one and build the features I needed myself. 
 
 So, this site is a work in progress and always will be. I'm having fun with it.
 

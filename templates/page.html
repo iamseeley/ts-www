@@ -11,7 +11,7 @@
                 <p>styles inspired by wikipedia</p>
             </section> -->
             <section class="feed-section">
-                <h3>feed</h3>
+                <h2>Feed</h2>
                 <a href="https://example.com" class="external-link" 
            data-title="Example Site" 
            data-description="This is an example of an external site providing useful information."
@@ -50,7 +50,7 @@
      
         {{ if eq .Page.Title "writing" }}
         <section class="writing-section">
-            <h3>writing</h3>
+            <h2>Writing</h2>
             <ul class="feed">
                 {{ range .Data.writing }}
                 {{ if eq .frontMatter.draft false}}
@@ -68,7 +68,7 @@
         </section>
         {{ else if eq .Page.Title "projects" }}
         <section class="project-section">
-            <h3>projects</h3>
+            <h2>Projects</h2>
             <ul class="feed">
                 {{ range .Data.projects }}
                 {{ if eq .frontMatter.draft false}}
@@ -87,13 +87,13 @@
         </section>
         {{ else if eq .Page.Title "about" }}
         <section class="about-section">
-            <h3>about</h3>
+            <h2>About</h2>
             <img class='profile' src='/public/images/profile.jpg' />
             <div class="">
-                <p>my name is thomas seeley. i like building for the web and creating useful, fun software.</p>
-                <p>i spend my time making things and trying to get better at making things.</p>
-                <p>i'm currently pursuing a ms in cs with a focus on data mining and intelligent systems.</p>
-                <p>reach out if you'd like to work together, or if you just want to say hi! <a href="mailto:hello@tseeley.com">hello@tseeley.com</a></p>
+                <p>My name is Thomas Seeley. I like building for the web and creating useful, fun software.</p>
+                <p>I spend my time making things and trying to get better at making things.</p>
+                <p>I'm currently pursuing a MS in CS with a focus on data mining and intelligent systems.</p>
+                <p>Reach out if you'd like to work together, or if you just want to say hi! <a href="mailto:hello@tseeley.com">hello@tseeley.com</a></p>
             </div>
         </section>
         {{end}}
