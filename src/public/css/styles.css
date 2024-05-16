@@ -11,15 +11,13 @@
   }
 
 .top {
-  background-color:  #2563eb;
-  height: 4px;
+  background-color:  black;
+  height: 32px;
   width: 100%;
 }
 
   .wrap {
     margin: auto;
-    
-
     display: flex;
     flex-direction: column;
     justify-content: center;
