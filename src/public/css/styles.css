@@ -33,7 +33,7 @@
     color: #2563eb;
   }
 
-  a:hover {
+  a:hover, a:focus, a:active {
     text-decoration: underline 2px;
 
   }
