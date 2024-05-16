@@ -1,7 +1,6 @@
   * {
     margin: 0;
     padding: 0;
-    text-decoration: none;
   }
   
   body {
@@ -69,13 +68,13 @@
 
   nav a:hover, nav a:focus, nav a.touch-active {
     text-decoration: underline 2px;
-    text-underline-offset: 11.5px;
+    text-underline-offset: 11px;
   }
 
   nav a.active {
     color: black;
     text-decoration: underline 2px;
-    text-underline-offset: 11.5px;
+    text-underline-offset: 11px;
   }
 
   
