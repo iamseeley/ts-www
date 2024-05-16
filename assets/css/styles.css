@@ -33,7 +33,7 @@
     color: #2563eb;
   }
 
-  a:hover, a:focus, a:active {
+  a:hover, a:focus {
     text-decoration: underline 2px;
   }
   
@@ -67,7 +67,7 @@
     
   }
 
-  nav a:hover, nav a:focus, nav a:active, nav a.touch-active {
+  nav a:hover, nav a:focus, nav a.touch-active {
     text-decoration: underline 2px;
     text-underline-offset: 11.5px;
   }
