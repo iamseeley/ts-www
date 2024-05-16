@@ -4,16 +4,27 @@
   }
   
   body {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    /* margin-right: 20px; */
+  }
+
+.top {
+  background-color:  #2563eb;
+  height: 4px;
+  width: 100%;
+}
+
+  .wrap {
     margin: auto;
+    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 624px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: normal;
     padding: 16px;
-    /* margin-right: 20px; */
   }
 
   h1, h2, h3 {
@@ -126,9 +137,6 @@ nav a.active::after {
 
 }
   
-  /* nav a:hover, nav a:focus, nav a:active {
-    border-bottom-color: #2563eb;
-  } */
   
   nav a.active {
     color: black;
