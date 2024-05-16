@@ -66,7 +66,11 @@
     
   }
 
-  nav a:hover, nav a:focus, nav a.touch-active {
+  nav a {
+    text-decoration: none;
+  }
+
+  nav a:hover, nav a:focus {
     text-decoration: underline 2px;
     text-underline-offset: 11px;
   }

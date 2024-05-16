@@ -23,15 +23,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Optional: Add a listener for navigation changes (if using a router)
     window.addEventListener('popstate', updateActiveLink);
-  
-    // Add touch event listeners to nav links
-    navLinks.forEach(link => {
-      link.addEventListener('touchstart', () => {
-        link.classList.add('touch-active');
-      });
-      link.addEventListener('touchend', () => {
-        setTimeout(() => link.classList.remove('touch-active'), 300); // Delay to see the active state
-      });
-    });
   });
-  
