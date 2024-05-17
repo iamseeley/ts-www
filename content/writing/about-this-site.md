@@ -11,7 +11,7 @@ featured: false
 ---
 
 
-This site is made from a <a href="https://github.com/iamseeley/go-forth">static site generator</a> I wrote in Go. I write my page content in markdown and the files get converted to html!
+This site is built with a <a href="https://github.com/iamseeley/go-forth">static site generator</a> I wrote in Go. I write my page content in markdown and the files get converted to html!
 
 Over the past few years I've built multiple personal websites, mostly with frameworks. For this site I decided to go without one and build the features I needed myself. 
 

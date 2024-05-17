@@ -1,6 +1,6 @@
 {
   "about-this-site": {
-    "body": "\n\n\nThis site is made from a \u003ca href=\"https://github.com/iamseeley/go-forth\"\u003estatic site generator\u003c/a\u003e I wrote in Go. I write my page content in markdown and the files get converted to html!\n\nOver the past few years I've built multiple personal websites, mostly with frameworks. For this site I decided to go without one and build the features I needed myself. \n\nSo, this site is a work in progress and always will be. I'm having fun with it.\n\n",
+    "body": "\n\n\nThis site is built with a \u003ca href=\"https://github.com/iamseeley/go-forth\"\u003estatic site generator\u003c/a\u003e I wrote in Go. I write my page content in markdown and the files get converted to html!\n\nOver the past few years I've built multiple personal websites, mostly with frameworks. For this site I decided to go without one and build the features I needed myself. \n\nSo, this site is a work in progress and always will be. I'm having fun with it.\n\n",
     "frontMatter": {
       "data-description": "this site is built with a static site generator i wrote in go.",
       "data-image": "/public/images/profile.jpg",

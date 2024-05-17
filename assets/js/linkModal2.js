@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (currentModal) {
         hideModal();
       }
-      showTimeout = setTimeout(() => showModal(this, event), 600);
+      const description = this.getAttribute('data-description');
+      const image = this.getAttribute('data-image');
+      if (description || image) {
+        showTimeout = setTimeout(() => showModal(this, event), 600);
+      }
     });
 
     link.addEventListener('mouseleave', function(event) {
@@ -23,22 +27,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     link.addEventListener('click', function(event) {
       if (!currentModal) {
-        event.preventDefault();
-        clearTimeout(hideTimeout);
-        clearTimeout(showTimeout);
-        showModal(this, event);
+        const description = this.getAttribute('data-description');
+        const image = this.getAttribute('data-image');
+        if (description || image) {
+          event.preventDefault();
+          clearTimeout(hideTimeout);
+          clearTimeout(showTimeout);
+          showModal(this, event);
+        }
       }
     });
   });
 
   function showModal(element, event) {
+    const description = element.getAttribute('data-description');
+    const image = element.getAttribute('data-image');
+
+    if (!description && !image) {
+      return;
+    }
+
     if (currentModal) {
       return;
     }
 
     const title = element.getAttribute('data-title');
-    const description = element.getAttribute('data-description');
-    const image = element.getAttribute('data-image');
     const url = element.href;
     const isExternal = element.target === '_blank';
 
@@ -46,12 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.classList.add('modal');
     modal.href = url;
     modal.target = isExternal ? '_blank' : '_self';
-    modal.innerHTML = `
-      <div>
-        <p>${description}</p>
-        <img src="${image}" alt="${title}" style="max-width: 100px; max-height: 100px;">
-      </div>
-    `;
+
+    let modalContent = '';
+    if (description) {
+      modalContent += `<p>${description}</p>`;
+    }
+    if (image) {
+      modalContent += `<img src="${image}" alt="${title}" style="max-width: 100px; max-height: 100px;">`;
+    }
+
+    modal.innerHTML = `<div>${modalContent}</div>`;
 
     modalContainer.innerHTML = '';
     modalContainer.appendChild(modal);
