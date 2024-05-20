@@ -7,10 +7,10 @@ draft: false
 featured: true
 ---
 
-hi, my name is thomas and i like making things. i'll share those things here.
+Hi, my name is Thomas and I like making things. I'll share those things here.
 
-sound good? okay.
+Sound good? okay.
 
-best,
+Best,
 
-thomas
+Thomas
