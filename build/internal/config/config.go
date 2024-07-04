@@ -13,7 +13,6 @@ type Config struct {
 	OutputPath      string `json:"outputPath"`
 	ThemeName       string `json:"themeName"`
 	DataPath        string `json:"dataPath"`
-	// Add other configuration fields as needed
 }
 
 func LoadConfig(path string) (*Config, error) {
